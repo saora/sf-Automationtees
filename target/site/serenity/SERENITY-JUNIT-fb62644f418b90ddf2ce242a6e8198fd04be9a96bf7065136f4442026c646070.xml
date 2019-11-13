@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="1" failures="0" name="Home Page" skipped="0" tests="1" time="18.42" timestamp="2019-11-13 10:19:10"><testcase name="Scan Js Button from Home Page"><error message="Timed out after 2 seconds. Element not found&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'SORTUNO-LTW4', ip: '10.33.37.99', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.2'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">Timed out after 2 seconds. Element not found
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SORTUNO-LTW4', ip: '10.33.37.99', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.2'
+Driver info: driver.version: unknown</error><system-err>Timed out after 2 seconds. Element not found
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'SORTUNO-LTW4', ip: '10.33.37.99', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.2'
+Driver info: driver.version: unknown&#13;
+pages.login.LeccLoginPage.setOrgUser(LeccLoginPage.java:35)&#13;
+testdata.LeccLoginData.loginLecc(LeccLoginData.java:27)&#13;
+steps.login.LoginSteps.sendLeccLoginData(LoginSteps.java:34)&#13;
+stepsdefinition.lecc.LeccLoginStepsDefinition.fillUserData(LeccLoginStepsDefinition.java:26)&#13;
+cucumber.runner.Runner.runPickle(Runner.java:80)&#13;
+</system-err></testcase></testsuite>
