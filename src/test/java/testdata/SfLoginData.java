@@ -6,8 +6,12 @@ import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.login.SfLoginPage;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import static testdata.GetDataFromSpreadSheet.getSheetsService;
 
@@ -30,5 +34,27 @@ public class SfLoginData extends PageObject {
                 sfLoginPage.submitBtn();
             }
         }
+    }
+
+
+
+    public void sfEnterLoginData(){
+        File file = new File("src/main/resources/properties/testdata.properties");
+        FileInputStream fileInput = null;
+        try{
+            fileInput = new FileInputStream(file);
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+
+        Properties prop = new Properties();
+        try {
+            prop.load(fileInput);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        sfLoginPage.setOrgUser(prop.getProperty("salesforce.username"));
+        sfLoginPage.setOrgPass(prop.getProperty("password.salesforce"));
+        sfLoginPage.submitBtn();
     }
 }

@@ -1,5 +1,6 @@
 package stepsdefinition.salesforce;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,11 +21,15 @@ public class SfLoginStepsDefinition {
 
     @When("^I submit the username and password$")
     public void fillData()throws Exception {
+
         loginSteps.sendLoginData();
     }
 
-    @Then("^I should Logged In$")
+    @Then("^I select the Object$")
     public void verifyAcct()throws Exception {
         sfHomePage.switchToClassic();
+        sfHomePage.buildOption();
+        sfHomePage.selSalesforceObject("Campaigns");
     }
+
 }

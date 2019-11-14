@@ -9,9 +9,15 @@ Feature: salesforce
   #Scenario: Log in salesforce
     Given I navigate to the Login page
     When I submit the username and password
-    Then I should Logged In
+    Then I select the Object
 
   Scenario: Add Js Button
         Given I click on new Js Button
         When I submit Js Button Informtion
         Then I should create a new Js Button
+
+  Scenario:Add layout
+        Given I select the layout option
+        When I create a Layout
+        Then I should create a new Layout
+

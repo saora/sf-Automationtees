@@ -29,7 +29,6 @@ public class SfLoginPage extends PageObject {
     }
 
     public void setOrgUser(String orgUser){
-
         this.user.sendKeys(orgUser);
     }
 

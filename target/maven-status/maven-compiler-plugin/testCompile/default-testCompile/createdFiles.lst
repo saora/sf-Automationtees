@@ -2,6 +2,7 @@ testdata\SfLoginData.class
 stepsdefinition\JsButtonHomePageStepsDefinition.class
 testdata\JsButtonData.class
 steps\sfhomepage\LayoutSteps.class
+testdata\LayoutData.class
 stepsdefinition\lecc\LeccLoginStepsDefinition.class
 steps\login\LoginSteps.class
 pages\salesforce\SfHomePage.class
@@ -18,4 +19,5 @@ pages\salesforce\BtnLinksActionsPage.class
 steps\sfhomepage\JsButtonSteps.class
 testdata\ActionData.class
 testdata\LeccLoginData.class
+stepsdefinition\salesforce\LayoutStepsDefinition.class
 pages\lecc\LeccHomePage.class

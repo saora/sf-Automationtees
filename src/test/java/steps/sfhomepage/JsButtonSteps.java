@@ -24,7 +24,8 @@ public class JsButtonSteps extends PageObject {
 
     @Step
     public void newJsButton()throws Exception {
-        jsButtonData.getDataJsButton();
+        //jsButtonData.getDataJsButton();
+        jsButtonData.jsButtonTesData();
     }
 
     @Step

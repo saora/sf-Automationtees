@@ -12,6 +12,7 @@ public class LoginSteps {
     private LeccLoginPage leccLoginPage;
     private LeccLoginData leccLoginData;
 
+
     @Step
     public void openLoginPage() {
         sfLoginPage.open();
@@ -26,12 +27,15 @@ public class LoginSteps {
 
     @Step
     public void sendLoginData()throws Exception {
-        sfLoginData.loginSalesforce();
+        //sfLoginData.loginSalesforce();
+        sfLoginData.sfEnterLoginData();
+
     }
 
     @Step
     public void sendLeccLoginData()throws Exception{
-        leccLoginData.loginLecc();
+        //leccLoginData.loginLecc();
+          sfLoginData.sfEnterLoginData();
 
     }
 }

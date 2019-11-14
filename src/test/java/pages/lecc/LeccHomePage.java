@@ -3,10 +3,11 @@ package pages.lecc;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LeccHomePage extends PageObject {
-    @FindBy(id = "form-j_idt64")
+    @FindBy(xpath = "//*[@id=\"form-j_idt64\"]/span")
     private WebElementFacade jsButtonScan;
 
     @FindBy(id = "form-j_idt88")
@@ -16,7 +17,9 @@ public class LeccHomePage extends PageObject {
     private WebElementFacade inProgress;
 
     public void jsBtnScan(){
-        waitForCondition().until(ExpectedConditions.textToBePresentInElement(jsButtonScan,"Scan"));
+        //waitForCondition().until(ExpectedConditions.elementToBeClickable(jsButtonScan));
+        //waitFor("//*[@id=\"form-j_idt64\"]/span");
+        //System.out.println();
         jsButtonScan.click(); }
     public void scanInprogress(){
         jsButtonConfirm.click();

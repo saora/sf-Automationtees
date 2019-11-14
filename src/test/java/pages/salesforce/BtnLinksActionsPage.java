@@ -59,7 +59,7 @@ public class BtnLinksActionsPage extends PageObject {
     private WebElementFacade clickListButton;
 
     @FindBy(id = "OpenType")
-    private WebElementFacade selBehavior;
+    private WebElementFacade behaviorDropdown;
 
     @FindBy(id = "LinkType")
     private WebElementFacade selContentSource;
@@ -97,13 +97,13 @@ public class BtnLinksActionsPage extends PageObject {
         this.clickListButton.click();
     }
 
-    public void setSelBehavior(String selBehavior){
-        this.selBehavior.selectByVisibleText(selBehavior);
+    public void setSelBehavior(){
+       behaviorDropdown.selectByVisibleText("Execute JavaScript");
     }
 
-    public void setSelContentSource(String selContentSource){
-        this.selContentSource.selectByVisibleText(selContentSource);
-    }
+//    public void setSelContentSource(String selContentSource){
+//        this.selContentSource.selectByVisibleText(selContentSource);
+//    }
 
     public void setFillContentEditor(String fillContentEditor){
         this.fillContentEditor.clear();
@@ -206,7 +206,7 @@ public class BtnLinksActionsPage extends PageObject {
             default:
                 System.out.println("no match");
         }
-        selBehavior.selectByVisibleText(behavior);
+        //selBehavior.selectByVisibleText(behavior);
         selContentSource.selectByVisibleText(contentSorce);
         fillContentEditor.sendKeys(contentEditor);
         saveJsButton();
