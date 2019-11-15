@@ -3,6 +3,7 @@ package stepsdefinition.salesforce;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.serenitybdd.screenplay.targets.EnsureFieldVisible;
 import pages.salesforce.SfHomePage;
 import steps.sfhomepage.LayoutSteps;
 
@@ -21,7 +22,7 @@ public class LayoutStepsDefinition {
 
     @Then("^I should create a new Layout$")
     public void newJsButtonVerification(){
-
+        layoutSteps.expectedResultLayout();
     }
 
 }

@@ -3,10 +3,19 @@ package pages.login;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.targets.EnsureFieldVisible;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-@DefaultUrl("https://login.stmpa.stm.salesforce.com/")
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.hasValue;
+
+//@DefaultUrl("https://login.stmpa.stm.salesforce.com/")
+@DefaultUrl("https://login.salesforce.com/?locale=eu")
 public class SfLoginPage extends PageObject {
     @FindBy(id = "username")
     private WebElementFacade user;
@@ -22,6 +31,14 @@ public class SfLoginPage extends PageObject {
 
     @FindBy(id = "save")
     private static WebElementFacade click_Verify;
+
+    //LOGIN
+    @FindBy(className = "slds-global-header__logo")
+    private WebElementFacade salesforceLightningHomeLogo;
+
+    @FindBy(id = "phHeaderLogoImage")
+    private WebElementFacade salesforceClassicHomeLogo;
+
 
     public void setLoginData(String user, String pass){
         this.user.sendKeys(user);
@@ -46,8 +63,16 @@ public class SfLoginPage extends PageObject {
         click_Verify.click();
 
     }
-    public void loginVerification(){
-        // Assert.assertEquals("Home",find(By.linkText("Home")).getText());
+
+    public void salesforceLoginVerification(){
+        if(salesforceLightningHomeLogo.isCurrentlyVisible()){
+            Assert.assertTrue(salesforceLightningHomeLogo.isCurrentlyVisible());
+
+        }else{
+            Assert.assertTrue(salesforceClassicHomeLogo.isCurrentlyVisible());
+        }
+
     }
+
 
 }

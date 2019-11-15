@@ -5,6 +5,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.aspectj.bridge.Message;
 import org.jruby.RubyProcess;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class SfHomePage extends PageObject {
 
-    @FindBy(id = "userNavLabel")
+        @FindBy(id = "userNavLabel")
     private WebElementFacade userNav;
 
     @FindBy(id="userNav-menuItems")
@@ -262,6 +263,19 @@ public class SfHomePage extends PageObject {
 
     @FindBy(id = "troughCategory__Button")
     private WebElementFacade lbuttons;
+
+    @FindBy(id = "ext-gen9")
+    private WebElementFacade layoutcreatedName;
+
+
+    public void salesforceTestVerification(WebElementFacade elementsf){
+        Assert.assertTrue(elementsf.isCurrentlyVisible());
+    }
+
+
+    public void savedLayoutVerification(){
+        salesforceTestVerification(layoutcreatedName);
+    }
 
     public void addCustomLayout(String lName){
         newLayout.waitUntilEnabled().click();

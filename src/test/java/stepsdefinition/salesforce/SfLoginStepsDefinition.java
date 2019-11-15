@@ -21,8 +21,12 @@ public class SfLoginStepsDefinition {
 
     @When("^I submit the username and password$")
     public void fillData()throws Exception {
-
         loginSteps.sendLoginData();
+    }
+
+    @Then("^I log in Salesforce page$")
+    public void sfLoginValidation(){
+        loginSteps.loginExpectedResult();
     }
 
     @Then("^I select the Object$")

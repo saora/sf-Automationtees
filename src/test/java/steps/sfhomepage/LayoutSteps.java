@@ -28,6 +28,11 @@ public class LayoutSteps extends PageObject {
     }
 
     @Step
+    public void expectedResultLayout(){
+        sfHomePage.savedLayoutVerification();
+    }
+
+    @Step
     public void dragAndDrop(String elementName){
 
     }

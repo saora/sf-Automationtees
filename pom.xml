@@ -60,7 +60,6 @@
             <version>v4-rev456-1.22.0</version>
         </dependency>
 
-
     </dependencies>
 
     <build>
@@ -70,7 +69,7 @@
             <version>3.0.0-M2</version>
             <configuration>
                 <includes>
-                    <include>stepsdefinition.RunTest.java</include>
+                    <include>runner.RunTest.java</include>
                 </includes>
                 <reuseForks>true</reuseForks>
                 <forkCount>2</forkCount>

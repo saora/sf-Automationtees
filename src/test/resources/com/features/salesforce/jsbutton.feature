@@ -16,8 +16,5 @@ Feature: salesforce
         When I submit Js Button Informtion
         Then I should create a new Js Button
 
-  Scenario:Add layout
-        Given I select the layout option
-        When I create a Layout
-        Then I should create a new Layout
+
 
