@@ -7,6 +7,8 @@ import net.serenitybdd.screenplay.targets.EnsureFieldVisible;
 import pages.salesforce.SfHomePage;
 import steps.sfhomepage.LayoutSteps;
 
+import java.io.IOException;
+
 public class LayoutStepsDefinition {
 
     private LayoutSteps layoutSteps;
@@ -21,7 +23,7 @@ public class LayoutStepsDefinition {
     }
 
     @Then("^I should create a new Layout$")
-    public void newJsButtonVerification(){
+    public void newJsButtonVerification()throws IOException {
         layoutSteps.expectedResultLayout();
     }
 

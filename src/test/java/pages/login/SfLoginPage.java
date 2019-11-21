@@ -1,18 +1,12 @@
 package pages.login;
 
+import jdk.jfr.Timespan;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.targets.EnsureFieldVisible;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.hasValue;
 
 //@DefaultUrl("https://login.stmpa.stm.salesforce.com/")
 @DefaultUrl("https://login.salesforce.com/?locale=eu")
@@ -58,16 +52,14 @@ public class SfLoginPage extends PageObject {
     }
 
     public void setVerificationCode(String verifyCode){
-
         fillVerificationCode.sendKeys(verifyCode);
         click_Verify.click();
-
     }
+
 
     public void salesforceLoginVerification(){
         if(salesforceLightningHomeLogo.isCurrentlyVisible()){
             Assert.assertTrue(salesforceLightningHomeLogo.isCurrentlyVisible());
-
         }else{
             Assert.assertTrue(salesforceClassicHomeLogo.isCurrentlyVisible());
         }

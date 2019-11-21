@@ -1,1 +1,4 @@
+utils\GmailScreen.class
+utils\InboxReader.class
+com\InterfaceApplication.class
 com\FileDataReader.class

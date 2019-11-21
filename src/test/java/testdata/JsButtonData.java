@@ -1,5 +1,6 @@
 package testdata;
 
+import com.FileDataReader;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import net.serenitybdd.core.pages.PageObject;
@@ -18,6 +19,7 @@ import static testdata.GetDataFromSpreadSheet.getSheetsService;
 public class JsButtonData extends PageObject {
     private SfHomePage sfHomePage;
     private BtnLinksActionsPage btnLinksActionsPage;
+
 
     public void getDataJsButton() throws IOException {
         Sheets service = getSheetsService();
@@ -60,36 +62,18 @@ public class JsButtonData extends PageObject {
         }
     }
 
-    public void jsButtonTesData(){
-
-        File file = new File("src/main/resources/properties/testdata.properties");
-        FileInputStream fileInput = null;
-        try{
-            fileInput = new FileInputStream(file);
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-
-        Properties prop = new Properties();
-        try {
-            prop.load(fileInput);
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
-
-
-        btnLinksActionsPage.setFillLabel(prop.getProperty("jsbutton.label"));
-        btnLinksActionsPage.setFillName(prop.getProperty("jsbutton.name"));
-        btnLinksActionsPage.setFillDescription(prop.getProperty("jsbutton.description"));
+    public void jsButtonTesData()throws IOException{
+        FileDataReader prop = new FileDataReader();
+        btnLinksActionsPage.setFillLabel(prop.propertiesFile().getProperty("jsbutton.label"));
+        btnLinksActionsPage.setFillName(prop.propertiesFile().getProperty("jsbutton.name"));
+        btnLinksActionsPage.setFillDescription(prop.propertiesFile().getProperty("jsbutton.description"));
         btnLinksActionsPage.setDetailPageButton();
-
 
         btnLinksActionsPage.setSelBehavior();
         //btnLinksActionsPage.setSelContentSource(prop.getProperty("jsbutton.contentsource"));
 
         try {
-            btnLinksActionsPage.setFillContentEditor(prop.getProperty("jsbutton.contenteditor"));
+            btnLinksActionsPage.setFillContentEditor(prop.propertiesFile().getProperty("jsbutton.contenteditor"));
         }catch (Exception e){
             System.out.println("Content Editor is not present");
         }

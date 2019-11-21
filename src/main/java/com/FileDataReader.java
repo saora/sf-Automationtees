@@ -1,15 +1,15 @@
 package com;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
-public class FileDataReader {
+public class FileDataReader implements InterfaceApplication{
 
-
-    public void getFileData(){
-
-    }}
+    public Properties propertiesFile()throws IOException{
+        Properties propfile = new Properties();
+        FileReader readFile = new FileReader(propertiesFile);
+        propfile.load(readFile);
+        return propfile;
+    }
+}
 

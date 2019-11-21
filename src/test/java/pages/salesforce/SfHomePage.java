@@ -1,14 +1,17 @@
 package pages.salesforce;
 
+import com.FileDataReader;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.aspectj.bridge.Message;
+import org.assertj.core.api.SoftAssertions;
 import org.jruby.RubyProcess;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.io.IOException;
 import java.util.List;
 
 public class SfHomePage extends PageObject {
@@ -267,21 +270,36 @@ public class SfHomePage extends PageObject {
     @FindBy(id = "ext-gen9")
     private WebElementFacade layoutcreatedName;
 
+    @FindBy(id = "errorDiv_ep")
+    private WebElementFacade errorMessageLayout;
+
 
     public void salesforceTestVerification(WebElementFacade elementsf){
         Assert.assertTrue(elementsf.isCurrentlyVisible());
     }
 
 
-    public void savedLayoutVerification(){
-        salesforceTestVerification(layoutcreatedName);
+    public void savedLayoutVerification()throws IOException {
+        FileDataReader prop = new FileDataReader();
+
+        SoftAssertions softAssertions = new SoftAssertions();
+        if(layoutcreatedName.isCurrentlyVisible()) {
+            softAssertions.assertThat(layoutcreatedName.getText().equals(prop.propertiesFile().getProperty("layout.name"))).isTrue();
+        }else{
+            Assert.assertFalse(errorMessageLayout.isCurrentlyVisible());
+        }
+
+        //Assert.assertTrue(layoutcreatedName.isCurrentlyVisible());
+
     }
 
     public void addCustomLayout(String lName){
         newLayout.waitUntilEnabled().click();
         layoutName.sendKeys(lName);
         saveLayout.click();
-        lbuttons.click();
+
+        Assert.assertTrue(layoutcreatedName.isCurrentlyVisible());
+       // lbuttons.click();
     }
 
     public void buildOption(){

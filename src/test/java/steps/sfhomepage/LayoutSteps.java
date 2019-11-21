@@ -23,12 +23,12 @@ public class LayoutSteps extends PageObject {
     }
 
     @Step
-    public void getCustomLayoutName(){
+    public void getCustomLayoutName()throws Exception{
         layoutData.getLayoutName();
     }
 
     @Step
-    public void expectedResultLayout(){
+    public void expectedResultLayout()throws IOException{
         sfHomePage.savedLayoutVerification();
     }
 

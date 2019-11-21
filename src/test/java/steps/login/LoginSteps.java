@@ -1,6 +1,5 @@
 package steps.login;
 
-import net.serenitybdd.screenplay.targets.EnsureFieldVisible;
 import net.thucydides.core.annotations.Step;
 import pages.login.LeccLoginPage;
 import pages.login.SfLoginPage;
@@ -13,8 +12,6 @@ public class LoginSteps {
     private SfLoginData sfLoginData;
     private LeccLoginPage leccLoginPage;
     private LeccLoginData leccLoginData;
-    private SfHomePage sfHomePage;
-
 
     @Step
     public void openLoginPage() {
@@ -32,7 +29,6 @@ public class LoginSteps {
     public void sendLoginData()throws Exception {
         //sfLoginData.loginSalesforce();
         sfLoginData.sfEnterLoginData();
-
     }
 
     @Step
