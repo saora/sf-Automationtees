@@ -23,7 +23,7 @@ public class LeccLoginStepsDefinition {
     }
     @When("^I submit the username and password for lecc$")
     public void fillUserData(){
-        loginSteps.sendLoginData();
+        loginSteps.sendLoginData("lecc.login");
         //loginSteps.sendLeccLoginData();
     }
     @Then("^I should Logged In Lecc home page$")
