@@ -25,9 +25,9 @@ public class LoginSteps {
     }
 
     @Step
-    public void sendLoginData() {
+    public void sendLoginData(String urlLoginPage) {
         //sfLoginData.loginSalesforce();
-        sfLoginData.sfEnterLoginData();
+        sfLoginData.sfEnterLoginData(urlLoginPage);
     }
 
     public void openLeccLoginPage(){
@@ -44,10 +44,9 @@ public class LoginSteps {
     }
 
     @Step
-    public void sendLeccLoginData(){
+    public void sendLeccLoginData(String urlLoginPage){
         //leccLoginData.loginLecc();
-          sfLoginData.sfEnterLoginData();
-
+          sfLoginData.sfEnterLoginData(urlLoginPage);
     }
 
     @Step
