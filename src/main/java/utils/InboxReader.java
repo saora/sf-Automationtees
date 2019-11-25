@@ -1,5 +1,7 @@
 package utils;
 
+import com.FileDataReader;
+
 import javax.mail.*;
 import javax.mail.search.FlagTerm;
 import java.util.Properties;
@@ -18,12 +20,15 @@ public class InboxReader {
 
     public static String getEmail() throws MessagingException {
         String vargetcode = "";
+        FileDataReader prop = new FileDataReader();
+        EncriptData getPass = new EncriptData();
+
         Properties props = System.getProperties();
         props.setProperty("mail.store.protocol", "imaps");
         try {
             Session session = Session.getDefaultInstance(props, null);
             Store store = session.getStore("imaps");
-            store.connect("imap.gmail.com", "glbltest.salesforce@gmail.com", "61084n7mex01");
+            store.connect("imap.gmail.com",prop.propertiesFile().getProperty("acct.u"),getPass.getEncrData());
             Folder inbox = store.getFolder("Inbox");
             inbox.open(Folder.READ_WRITE);
             FlagTerm ft = new FlagTerm(new Flags(Flags.Flag.SEEN), false);
