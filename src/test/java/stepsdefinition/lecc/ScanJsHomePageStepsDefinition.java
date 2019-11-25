@@ -17,7 +17,7 @@ public class ScanJsHomePageStepsDefinition {
     }
     @When("^Confirm the Js Button Scann$")
     public void confirmScanJsButton(){
-        leccHomePageSteps.scanInProgress();
+        leccHomePageSteps.scanConfirmation();
     }
     @Then("^I should get the results$")
     public void getResultScan(){
