@@ -19,11 +19,10 @@ public class OrangeJsButtonStepsDefinition {
 
     @Given("^I logs in salesforce page$")
     public void loginSalesforce(){
-        loginSteps.openLoginPage("https://login.salesforce.com/?locale=eu");
-        loginSteps.sendLoginData();
+        //loginSteps.openLoginPage("https://login.salesforce.com/?locale=eu");
+        loginSteps.sendLoginData("salesforce.login");
         loginSteps.verificationCodeForLogin();
         loginSteps.switchToClassicMode();
-
     }
 
     @When("^I create a Js Button$")
@@ -48,7 +47,7 @@ public class OrangeJsButtonStepsDefinition {
     public void loginLecc(){
         loginSteps.openLoginPage("https://js-mover-dev.herokuapp.com/home.xhtml");
         loginSteps.openLeccLoginPage();
-        loginSteps.sendLoginData();
+        loginSteps.sendLoginData("lecc.login");
     }
     @When("^I scan Js Button$")
     public void scanJsButton(){
