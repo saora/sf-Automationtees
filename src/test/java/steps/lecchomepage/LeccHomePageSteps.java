@@ -9,13 +9,12 @@ public class LeccHomePageSteps {
 
     @Step
     public void scanJsButtonfromHomePage(){
-
         leccHomePage.jsBtnScan();
     }
 
     @Step
-    public void scanInProgress(){
-        leccHomePage.scanInprogress();
+    public void scanConfirmation(){
+        leccHomePage.confirmScan();
     }
 
     @Step
