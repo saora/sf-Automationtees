@@ -17,12 +17,12 @@ public class LeccLoginStepsDefinition {
 
     @Given("^I navigate to the Login Lecc page$")
     public void openLeccHomePage(){
-        loginSteps.openLeccLoginPage();
+        loginSteps.openLoginPage("https://js-mover-dev.herokuapp.com/home.xhtml");
         leccLoginPage.openLecc();
 
     }
     @When("^I submit the username and password for lecc$")
-    public void fillUserData()throws Exception{
+    public void fillUserData(){
         loginSteps.sendLoginData();
         //loginSteps.sendLeccLoginData();
     }
