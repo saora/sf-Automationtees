@@ -14,6 +14,8 @@ import org.openqa.selenium.WebElement;
 import java.io.IOException;
 import java.util.List;
 
+import static java.time.temporal.ChronoUnit.SECONDS;
+
 public class SfHomePage extends PageObject {
 
         @FindBy(id = "userNavLabel")
@@ -255,23 +257,7 @@ public class SfHomePage extends PageObject {
 
     //Layout
 
-    @FindBy(name = "new")
-    private WebElementFacade newLayout;
 
-    @FindBy(id = "p1")
-    private WebElementFacade layoutName;
-
-    @FindBy(name = "save")
-    private WebElementFacade saveLayout;
-
-    @FindBy(id = "troughCategory__Button")
-    private WebElementFacade lbuttons;
-
-    @FindBy(id = "ext-gen9")
-    private WebElementFacade layoutcreatedName;
-
-    @FindBy(id = "errorDiv_ep")
-    private WebElementFacade errorMessageLayout;
 
 
     public void salesforceTestVerification(WebElementFacade elementsf){
@@ -279,31 +265,9 @@ public class SfHomePage extends PageObject {
     }
 
 
-    public void savedLayoutVerification()throws IOException {
-        FileDataReader prop = new FileDataReader();
-
-        SoftAssertions softAssertions = new SoftAssertions();
-        if(layoutcreatedName.isCurrentlyVisible()) {
-            softAssertions.assertThat(layoutcreatedName.getText().equals(prop.propertiesFile().getProperty("layout.name"))).isTrue();
-        }else{
-            Assert.assertFalse(errorMessageLayout.isCurrentlyVisible());
-        }
-
-        //Assert.assertTrue(layoutcreatedName.isCurrentlyVisible());
-
-    }
-
-    public void addCustomLayout(String lName){
-        newLayout.waitUntilEnabled().click();
-        layoutName.sendKeys(lName);
-        saveLayout.click();
-
-        Assert.assertTrue(layoutcreatedName.isCurrentlyVisible());
-       // lbuttons.click();
-    }
-
     public void buildOption(){
-        customizeIcon.click();
+        //customizeIcon.click();
+        customizeIcon.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
     }
 
     public void selCustOpt(){
@@ -311,13 +275,16 @@ public class SfHomePage extends PageObject {
     }
 
     public void selLogOut(){
-        userNav.click();
+        userNav.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
 
         WebElementFacade select = navMenu;
         List<WebElement> options = select.findElements(By.linkText("Logout"));
-        for(WebElement oprion : options){
-            if("Logout".equals(oprion.getText()));
-            oprion.click();
+        for(WebElement option : options){
+            if("Logout".equals(option.getText())) {
+                option.click();
+            }else{
+                System.out.println("Logout error!!!");
+            }
         }
        //navMenu.selectByVisibleText("Logout");
     }
@@ -327,12 +294,15 @@ public class SfHomePage extends PageObject {
     }
 
     public void switchToClassic(){
-        try {
-        if(!lightningmode.isPresent()){
-            userProfile.click();
-            classicMode.click();
-            setupLink.click();
-        }
+       try {
+//            System.out.println(getAlert().getText());
+//            getDriver().switchTo().alert().accept();
+          // userProfile.withTimeoutOf(5,SECONDS).waitUntilPresent();
+
+            userProfile.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
+            classicMode.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
+            setupLink.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
+
         }catch (Exception e) {
             System.out.println(Message.ERROR);
         }
