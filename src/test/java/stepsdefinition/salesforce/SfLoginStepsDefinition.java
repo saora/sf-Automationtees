@@ -1,7 +1,5 @@
 package stepsdefinition.salesforce;
 
-import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -23,7 +21,7 @@ public class SfLoginStepsDefinition {
 
     @When("^I submit the username and password$")
     public void fillData() {
-        loginSteps.sendLoginData();
+        loginSteps.sendLoginData("salesforce.login");
         loginSteps.verificationCodeForLogin();
     }
 
