@@ -36,13 +36,13 @@ public class LayoutSteps extends PageObject {
     }
 
     @Step
-    public void dragAndDropJsButton(String elementName){
-        layoutPage.dragAndDropJsButtonToLayout("");
+    public void dragAndDropJsButton(){
+        layoutPage.dragAndDropCustomJsButtonToCustomLayout();
     }
 
     @Step
-    public void expectedResultLayout(){
-        layoutPage.savedLayoutVerification();
+    public void saveLayout(){
+        layoutPage.saveLayoutConfiguration();
     }
 
 }
