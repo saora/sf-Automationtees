@@ -23,7 +23,7 @@ public class LayoutData extends PageObject {
 
     public void addJsButtonToCustomLayout(){
         try{
-            layoutPage.dragAndDropJsButtonToLayout(prop.propertiesFile().getProperty("jsbutton.name"));
+            layoutPage.findJsButtonIntoLayout(prop.propertiesFile().getProperty("jsbutton.name"));
         }catch (IOException e){
             System.out.println("Fail getting Js Button name!!");
         }
