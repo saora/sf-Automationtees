@@ -56,15 +56,23 @@ public class LayoutPage extends PageObject {
     @FindBy(id = "ext-gen51")
     private WebElementFacade savebtnLayout;
 
-    public void dragAndDropJsButtonToLayout(String jsbuttonName) {
+    public void findJsButtonIntoLayout(String jsbuttonName) {
         buttonOptFromDropDown.click();
         findJsButton.sendKeys(jsbuttonName);
         //getDriver().switchTo().frame(0);
-        withAction().dragAndDrop(customJsButtonName,toElement).build().perform();
+       //dragAndDropCustomJsButtonToCustomLayout();
         //Actions action = new Actions(getDriver());
         //action.clickAndHold(getDriver().findElement(By.xpath("//div[@id='fieldTrough']/table/tbody/tr/td/div/div"))).moveToElement(toElement).release().build().perform();
             System.out.println("Js Button Name: "+customJsButtonName.getText());
-            savebtnLayout.click();
+
+    }
+
+    public void dragAndDropCustomJsButtonToCustomLayout(){
+        withAction().dragAndDrop(customJsButtonName,toElement).build().perform();
+    }
+
+    public void saveLayoutConfiguration(){
+        savebtnLayout.click();
     }
 
     public void addCustomLayout(String lName){
