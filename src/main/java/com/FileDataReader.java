@@ -11,5 +11,7 @@ public class FileDataReader implements InterfaceApplication{
         propfile.load(readFile);
         return propfile;
     }
+
+
 }
 
