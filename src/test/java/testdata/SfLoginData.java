@@ -40,9 +40,12 @@ public class SfLoginData extends PageObject {
         }
     }
 
-    public void sfEnterLoginData(){
+    public void sfEnterLoginData(String envLoginUrl){
+        getDriver().manage().window().maximize();
         try {
             FileDataReader prop = new FileDataReader();
+            getDriver().get(prop.propertiesFile().getProperty(envLoginUrl));
+
             sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("salesforce.username"));
             sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("password.salesforce"));
         }catch (IOException e){
