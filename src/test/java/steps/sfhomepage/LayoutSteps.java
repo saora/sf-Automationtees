@@ -2,6 +2,8 @@ package steps.sfhomepage;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
+import pages.salesforce.LayoutPage;
 import pages.salesforce.SfHomePage;
 import testdata.LayoutData;
 
@@ -15,6 +17,7 @@ public class LayoutSteps extends PageObject {
 
     private SfHomePage sfHomePage;
     private LayoutData layoutData;
+    private LayoutPage layoutPage;
 
     @Step
     public void addJsButtonToLayout(String objectOption){
@@ -23,18 +26,23 @@ public class LayoutSteps extends PageObject {
     }
 
     @Step
-    public void getCustomLayoutName()throws Exception{
+    public void getCustomLayoutName(){
         layoutData.getLayoutName();
     }
 
     @Step
-    public void expectedResultLayout()throws IOException{
-        sfHomePage.savedLayoutVerification();
+    public void addJsButtonToLayout(){
+        layoutData.addJsButtonToCustomLayout();
     }
 
     @Step
-    public void dragAndDrop(String elementName){
+    public void dragAndDropJsButton(String elementName){
+        layoutPage.dragAndDropJsButtonToLayout("");
+    }
 
+    @Step
+    public void expectedResultLayout(){
+        layoutPage.savedLayoutVerification();
     }
 
 }
