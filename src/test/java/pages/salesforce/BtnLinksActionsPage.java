@@ -65,7 +65,7 @@ public class BtnLinksActionsPage extends PageObject {
     private WebElementFacade selContentSource;
 
     @FindBy(id = "WebLinkFields_ContentEditor")
-    private WebElementFacade fillContentEditor;
+    public WebElementFacade fillContentEditor;
 
     @FindBy(xpath = "//*[@id=\"bottomButtonRow\"]/input[1]")
     private WebElementFacade save;
