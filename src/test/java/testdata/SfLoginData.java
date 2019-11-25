@@ -4,6 +4,7 @@ import com.FileDataReader;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import net.serenitybdd.core.pages.PageObject;
+import org.jruby.RubyProcess;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.login.SfLoginPage;
 import utils.InboxReader;
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 
@@ -38,20 +40,26 @@ public class SfLoginData extends PageObject {
         }
     }
 
-    public void sfEnterLoginData()throws Exception{
-        FileDataReader prop = new FileDataReader();
-        sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("salesforce.username"));
-        sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("password.salesforce"));
-
+    public void sfEnterLoginData(){
+        try {
+            FileDataReader prop = new FileDataReader();
+            sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("salesforce.username"));
+            sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("password.salesforce"));
+        }catch (IOException e){
+            System.out.println("Fail getting org user data!!");
+        }
         sfLoginPage.submitBtn();
+
+    }
+
+    public void verificationCodebyEmail(){
         try {
             String colect = InboxReader.getEmail();
             System.out.println("Codigo email "+colect);
             sfLoginPage.setVerificationCode(colect);
-
+            sfLoginPage.submmitVerificationCode();
         }catch (Exception e){
             System.out.println("Verification not nedded");
         }
-
     }
 }
