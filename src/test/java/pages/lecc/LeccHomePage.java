@@ -6,6 +6,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 public class LeccHomePage extends PageObject {
     @FindBy(xpath = "//*[@id=\"form-j_idt64\"]/span")
     private WebElementFacade jsButtonScan;
@@ -20,8 +22,9 @@ public class LeccHomePage extends PageObject {
         //waitForCondition().until(ExpectedConditions.elementToBeClickable(jsButtonScan));
         //waitFor("//*[@id=\"form-j_idt64\"]/span");
         //System.out.println();
+
         jsButtonScan.click(); }
-    public void scanInprogress(){
+    public void confirmScan(){
         jsButtonConfirm.click();
     }
     public void scanVerification(){
