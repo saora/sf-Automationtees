@@ -40,14 +40,17 @@ public class OrangeJsButtonStepsDefinition {
     @Then(value = "^I add the Js Button to a custom laytout$")
     public void addJsButtonToLayout(){
         layoutSteps.addJsButtonToLayout();
-
+        layoutSteps.dragAndDropJsButton();
+        layoutSteps.saveLayout();
     }
 
     @Given("^I log in Lecc$")
     public void loginLecc(){
-        loginSteps.openLoginPage("https://js-mover-dev.herokuapp.com/home.xhtml");
-        loginSteps.openLeccLoginPage();
+       // loginSteps.openLoginPage("https://js-mover-dev.herokuapp.com/home.xhtml");
         loginSteps.sendLoginData("lecc.login");
+        //loginSteps.openLeccLoginPage();
+       // loginSteps.openLoginPage("lecc.login");
+
     }
     @When("^I scan Js Button$")
     public void scanJsButton(){
@@ -57,6 +60,6 @@ public class OrangeJsButtonStepsDefinition {
 
     @Then("^I should get the scanning results$")
     public void getScanResult(){
-
+        leccHomePageSteps.leccJsButtonScanResult();
     }
 }
