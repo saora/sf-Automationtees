@@ -6,6 +6,7 @@ import com.google.api.services.sheets.v4.model.ValueRange;
 import net.serenitybdd.core.pages.PageObject;
 import org.jruby.RubyProcess;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pages.login.LeccLoginPage;
 import pages.login.SfLoginPage;
 import utils.InboxReader;
 
@@ -21,6 +22,7 @@ import static testdata.GetDataFromSpreadSheet.getSheetsService;
 
 public class SfLoginData extends PageObject {
     private SfLoginPage sfLoginPage;
+    private LeccLoginPage leccLoginPage;
 
     public void loginSalesforce() throws IOException {
         Sheets service = getSheetsService();
@@ -45,6 +47,11 @@ public class SfLoginData extends PageObject {
         try {
             FileDataReader prop = new FileDataReader();
             getDriver().get(prop.propertiesFile().getProperty(envLoginUrl));
+         try {
+             leccLoginPage.openLecc();
+         }catch (Exception e){
+             System.out.println("Element for LECC login not found !!");
+         }
 
             sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("salesforce.username"));
             sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("password.salesforce"));
@@ -52,6 +59,13 @@ public class SfLoginData extends PageObject {
             System.out.println("Fail getting org user data!!");
         }
         sfLoginPage.submitBtn();
+
+        try{
+            leccLoginPage.allowLeccAccess();
+        }catch(Exception e){
+            System.out.println("Element for allow acces is not present !!");
+
+        }
 
     }
 
