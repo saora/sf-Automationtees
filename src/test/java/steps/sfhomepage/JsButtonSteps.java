@@ -2,6 +2,7 @@ package steps.sfhomepage;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import pages.lecc.LeccHomePage;
 import pages.salesforce.BtnLinksActionsPage;
 import pages.salesforce.SfHomePage;
@@ -17,13 +18,19 @@ public class JsButtonSteps extends PageObject {
     private LeccHomePage leccHomePage;
 
     @Step
-    public void jsButtonActions(String obj){
+    public void jsButtonObject(String obj){
         sfHomePage.buildOption();
         sfHomePage.selSalesforceObject(obj);
     }
 
     @Step
-    public void newJsButton()throws Exception {
+    public void ObjectAndNewJsButton(){
+        sfHomePage.selObjectOption("Buttons, Links, and Actions");
+        btnLinksActionsPage.clickOption("New Button or Link");
+    }
+
+    @Step
+    public void newJsButton() {
         //jsButtonData.getDataJsButton();
         jsButtonData.jsButtonTesData();
     }
