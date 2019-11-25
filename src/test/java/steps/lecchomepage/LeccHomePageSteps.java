@@ -1,10 +1,11 @@
 package steps.lecchomepage;
 
+import net.serenitybdd.core.pages.PageObject;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.lecc.LeccHomePage;
 
-public class LeccHomePageSteps {
+public class LeccHomePageSteps extends PageObject {
     private LeccHomePage leccHomePage;
 
     @Step
@@ -20,5 +21,10 @@ public class LeccHomePageSteps {
     @Step
     public void scanVerificationhp(){
         leccHomePage.scanVerification();
+    }
+
+    @Step
+    public void leccJsButtonScanResult(){
+        leccHomePage.scanResult();
     }
 }
