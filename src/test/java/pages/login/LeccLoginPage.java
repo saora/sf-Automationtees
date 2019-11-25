@@ -10,6 +10,9 @@ public class LeccLoginPage extends PageObject {
     @FindBy(id = "loginButton")
     private WebElementFacade loginBtn;
 
+    @FindBy(className = "slds-button slds-button_brand")
+    private WebElementFacade leccLoginInToSalesforce;
+
     @FindBy(id = "username")
     private WebElementFacade user;
 
@@ -18,6 +21,9 @@ public class LeccLoginPage extends PageObject {
 
     @FindBy(id = "Login")
     private WebElementFacade submitBtn;
+
+    @FindBy(id = "oaapprove")
+    private WebElementFacade btnAllowLeccAccess;
 
     public void openLecc(){
         loginBtn.click();
@@ -31,12 +37,17 @@ public class LeccLoginPage extends PageObject {
     public void setOrgUser(String orgUser){
         this.user.sendKeys(orgUser);
     }
-
-    public void submitBtn(){
-        this.submitBtn.click();
-    }
-
     public void setOrgPass(String orgPass){
         this.pass.sendKeys(orgPass);
     }
+
+    public void submitBtn(){
+        leccLoginInToSalesforce.click();
+    }
+
+    public void allowLeccAccess(){
+        btnAllowLeccAccess.click();
+    }
+
+
 }
