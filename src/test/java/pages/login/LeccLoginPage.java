@@ -3,11 +3,9 @@ package pages.login;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.annotations.DefaultUrl;
 
-@DefaultUrl("https://js-mover-dev.herokuapp.com/home.xhtml")
+//@DefaultUrl("https://js-mover-dev.herokuapp.com/home.xhtml")
 public class LeccLoginPage extends PageObject {
-
 
     @FindBy(id = "loginButton")
     private WebElementFacade loginBtn;
@@ -21,7 +19,6 @@ public class LeccLoginPage extends PageObject {
     @FindBy(id = "Login")
     private WebElementFacade submitBtn;
 
-
     public void openLecc(){
         loginBtn.click();
     }
@@ -34,7 +31,6 @@ public class LeccLoginPage extends PageObject {
     public void setOrgUser(String orgUser){
         this.user.sendKeys(orgUser);
     }
-
 
     public void submitBtn(){
         this.submitBtn.click();
