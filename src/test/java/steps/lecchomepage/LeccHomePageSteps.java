@@ -5,11 +5,14 @@ import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.lecc.LeccHomePage;
 
+import java.util.concurrent.TimeUnit;
+
 public class LeccHomePageSteps extends PageObject {
     private LeccHomePage leccHomePage;
 
     @Step
     public void scanJsButtonfromHomePage(){
+
         leccHomePage.jsBtnScan();
     }
 
