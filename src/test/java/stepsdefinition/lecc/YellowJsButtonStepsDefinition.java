@@ -10,7 +10,7 @@ import steps.login.LoginSteps;
 import steps.sfhomepage.JsButtonSteps;
 import steps.sfhomepage.LayoutSteps;
 
-public class OrangeJsButtonStepsDefinition {
+public class YellowJsButtonStepsDefinition {
     @Steps
     private LoginSteps loginSteps;
     private LayoutSteps layoutSteps;
@@ -48,6 +48,8 @@ public class OrangeJsButtonStepsDefinition {
     public void loginLecc(){
        // loginSteps.openLoginPage("https://js-mover-dev.herokuapp.com/home.xhtml");
         loginSteps.sendLoginData("lecc.login");
+        loginSteps.verificationCodeForLogin();
+        loginSteps.allowAccessToLeccHomePages();
         //loginSteps.openLeccLoginPage();
        // loginSteps.openLoginPage("lecc.login");
 
