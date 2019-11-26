@@ -1,4 +1,4 @@
-Feature: Get Orange icon by scanning Js Buttons
+Feature: Get Yellow icon by scanning Js Buttons
 
   In order validate orange icon for Js Buttons on Home Page from LECC
   As a Registered user
