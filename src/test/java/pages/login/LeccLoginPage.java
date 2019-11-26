@@ -4,6 +4,8 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
+import java.util.concurrent.TimeUnit;
+
 //@DefaultUrl("https://js-mover-dev.herokuapp.com/home.xhtml")
 public class LeccLoginPage extends PageObject {
 
@@ -24,6 +26,9 @@ public class LeccLoginPage extends PageObject {
 
     @FindBy(id = "oaapprove")
     private WebElementFacade btnAllowLeccAccess;
+
+    @FindBy(xpath = "//*[@id='oaapprove']")
+    private WebElementFacade allowAccessToLeccHomePage;
 
     public void openLecc(){
         loginBtn.click();
@@ -46,7 +51,14 @@ public class LeccLoginPage extends PageObject {
     }
 
     public void allowLeccAccess(){
-        btnAllowLeccAccess.click();
+        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        try{
+            allowAccessToLeccHomePage.click();
+        }catch(Exception e){
+            System.out.println("Element for allow acces is not present !!");
+
+        }
+
     }
 
 
