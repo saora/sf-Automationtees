@@ -20,7 +20,6 @@ public class LoginSteps {
     public void openLoginPage(String urlapplication) {
         sfLoginPage.getDriver().manage().window().maximize();
         sfLoginPage.getDriver().get(urlapplication);
-
        // sfLoginPage.open();
     }
 
@@ -28,6 +27,7 @@ public class LoginSteps {
     public void sendLoginData(String urlLoginPage) {
         //sfLoginData.loginSalesforce();
         sfLoginData.sfEnterLoginData(urlLoginPage);
+
     }
 
     public void openLeccLoginPage(){
@@ -38,6 +38,10 @@ public class LoginSteps {
     public void verificationCodeForLogin(){
         sfLoginData.verificationCodebyEmail();
     }
+    public void allowAccessToLeccHomePages(){
+        leccLoginPage.allowLeccAccess();
+    }
+
     @Step
     public void switchToClassicMode(){
         sfHomePage.switchToClassic();
