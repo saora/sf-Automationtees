@@ -70,7 +70,7 @@ public class YellowJsButtonStepsDefinition {
     public void getScanResult(){
 
        // Assert.assertEquals("All buttons deployed or no impac1", true, leccHomePage.outputPanelScanResult.getText());
-        leccHomePageSteps.leccJsButtonScanResult();
+        leccHomePageSteps.leccJsButtonScanResult("unconverted buttons are assigned but may not be used");
 
     }
 }
