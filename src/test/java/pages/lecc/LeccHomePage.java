@@ -57,7 +57,7 @@ public class LeccHomePage extends PageObject {
           //waitOnPage().until(ExpectedConditions.visibilityOfElementLocated(By.id("form-j_idt81")));
     }
 
-    public void scanResult() {
-            Assert.assertTrue(outputPanelScanResult.getText(),outputPanelScanResult.containsText("unconverted buttons are assigned but may not be used"));
+    public void scanResult(String textValidation) {
+            Assert.assertTrue(outputPanelScanResult.getText(),outputPanelScanResult.containsText(textValidation));
     }
 }
