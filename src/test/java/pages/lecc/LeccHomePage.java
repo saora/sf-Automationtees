@@ -40,36 +40,21 @@ public class LeccHomePage extends PageObject {
     private WebElementFacade iconContainer;
 
     public void jsBtnScan(){
-       // waitForCondition().until(ExpectedConditions.elementToBeClickable(jsButtonScan));
-        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        jsButtonScan.waitUntilClickable().click();
-        System.out.println("BEFORE: "+outputPanelScanResult.getText());
+        jsButtonScan.withTimeoutOf(Duration.ofSeconds(10)).click();
+       // jsButtonScan.waitUntilClickable().click();
+        System.out.println("BEFORE SCAN: "+outputPanelScanResult.getText());
     }
     public void confirmScan(){
         getDriver().switchTo().activeElement();
         jsButtonConfirm.click();
-       // outputPanelScanResult.waitUntilNotVisible().setImplicitTimeout(Duration.ofSeconds(30));
 
-
-        //jsButtonConfirm.click();
     }
     public void scanVerification(){
         inProgress.getText();
-        System.out.println("Status: "+outputPanelScanResult.getText());
-        //getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
-
+        System.out.println("STATUS: "+outputPanelScanResult.getText());
         scanResultYellowIcon.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
-        //withTimeoutOf(Duration.ofSeconds(60)).getScanResultGreenIcon.waitUntilVisible();
-        System.out.println("After: "+outputPanelScanResult.getText());
-//        try{
-//
-//        withTimeoutOf(Duration.ofSeconds(60)).find(By.id("form-j_idt78")).waitUntilVisible();
-//            //waitOnPage().until(ExpectedConditions.visibilityOfElementLocated(By.id("form-j_idt81")));
-//            System.out.println("Scan for Green :"+scanResultYellowIcon.getText());
-//        }catch (Exception e){
-//            withTimeoutOf(Duration.ofSeconds(60)).find(By.id("form-j_idt81")).waitUntilVisible();
-//            System.out.println("Scan for Yellow :"+scanResultYellowIcon.getText());
-//        }
+        System.out.println("AFTER SCAN: "+outputPanelScanResult.getText());
+          //waitOnPage().until(ExpectedConditions.visibilityOfElementLocated(By.id("form-j_idt81")));
     }
 
     public void scanResult() {
