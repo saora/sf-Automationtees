@@ -27,7 +27,7 @@ public class LeccHomePageSteps extends PageObject {
     }
 
     @Step
-    public void leccJsButtonScanResult(){
-        leccHomePage.scanResult();
+    public void leccJsButtonScanResult(String textVal){
+        leccHomePage.scanResult(textVal);
     }
 }
