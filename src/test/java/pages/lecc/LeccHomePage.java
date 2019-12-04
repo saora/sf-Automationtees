@@ -36,9 +36,12 @@ public class LeccHomePage extends PageObject {
     @FindBy(css = ".slds-text-align_center:nth-child(2)")
     private WebElementFacade outputPanelScanResult;
 
+    @FindBy(className = "slds-grid slds-grid_align-center")
+    private WebElementFacade iconContainer;
+
     public void jsBtnScan(){
        // waitForCondition().until(ExpectedConditions.elementToBeClickable(jsButtonScan));
-        //getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         jsButtonScan.waitUntilClickable().click();
         System.out.println("BEFORE: "+outputPanelScanResult.getText());
     }
@@ -51,19 +54,25 @@ public class LeccHomePage extends PageObject {
         //jsButtonConfirm.click();
     }
     public void scanVerification(){
-       // waitForCondition().until(ExpectedConditions.textToBePresentInElement(inProgress,"Scan in progress"));
         inProgress.getText();
-        //System.out.println("Status 1: "+inProgress.getText());
-        System.out.println("Status Bef: "+outputPanelScanResult.getText());
-        getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        //scanResultYellowIcon.waitUntilPresent();
-        waitOnPage().until(ExpectedConditions.visibilityOfElementLocated(By.id("form-j_idt81")));
-        System.out.println("Scan for Yellow :"+scanResultYellowIcon.getText());
+        System.out.println("Status: "+outputPanelScanResult.getText());
+        //getDriver().manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
+
+        scanResultYellowIcon.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
+        //withTimeoutOf(Duration.ofSeconds(60)).getScanResultGreenIcon.waitUntilVisible();
+        System.out.println("After: "+outputPanelScanResult.getText());
+//        try{
+//
+//        withTimeoutOf(Duration.ofSeconds(60)).find(By.id("form-j_idt78")).waitUntilVisible();
+//            //waitOnPage().until(ExpectedConditions.visibilityOfElementLocated(By.id("form-j_idt81")));
+//            System.out.println("Scan for Green :"+scanResultYellowIcon.getText());
+//        }catch (Exception e){
+//            withTimeoutOf(Duration.ofSeconds(60)).find(By.id("form-j_idt81")).waitUntilVisible();
+//            System.out.println("Scan for Yellow :"+scanResultYellowIcon.getText());
+//        }
     }
 
     public void scanResult() {
-        //getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            //System.out.println("AFTER SCAN RESULT: "+scanResultYellowIcon.waitUntilPresent().getTextContent());
             Assert.assertTrue(outputPanelScanResult.getText(),outputPanelScanResult.containsText("unconverted buttons are assigned but may not be used"));
     }
 }
