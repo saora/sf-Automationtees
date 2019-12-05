@@ -64,7 +64,6 @@ public class JsButtonData extends PageObject {
 
     public void jsButtonTesData(){
         FileDataReader prop = new FileDataReader();
-        try {
             btnLinksActionsPage.setFillLabel(prop.propertiesFile().getProperty("jsbutton.label"));
             btnLinksActionsPage.setFillName(prop.propertiesFile().getProperty("jsbutton.name"));
             btnLinksActionsPage.setFillDescription(prop.propertiesFile().getProperty("jsbutton.description"));
@@ -79,11 +78,9 @@ public class JsButtonData extends PageObject {
             }
 
             btnLinksActionsPage.saveJsButton();
-            //btnLinksActionsPage.setSelContentSource(prop.getProperty("jsbutton.contentsource"));
-        }catch (IOException e){
-            System.out.println("Fail creating Js Button!!!");
-        }
 
+            //btnLinksActionsPage.setSelContentSource(prop.getProperty("jsbutton.contentsource"));
+            btnLinksActionsPage.objBtnLinkVerification(prop.propertiesFile().getProperty("jsbutton.name"));
     }
     }
 

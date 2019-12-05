@@ -53,7 +53,7 @@ public class SfLoginData extends PageObject {
 
             sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("salesforce.username"));
             sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("password.salesforce"));
-        }catch (IOException e){
+        }catch (Exception e){
             System.out.println("Fail getting org user data!!");
         }
         sfLoginPage.submitBtn();
