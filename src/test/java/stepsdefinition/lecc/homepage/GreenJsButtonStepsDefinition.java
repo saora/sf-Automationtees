@@ -1,4 +1,4 @@
-package stepsdefinition.lecc;
+package stepsdefinition.lecc.homepage;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -6,7 +6,7 @@ import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import steps.lecchomepage.LeccHomePageSteps;
 
-public class ScanJsHomePageStepsDefinition {
+public class GreenJsButtonStepsDefinition {
     @Steps
     private LeccHomePageSteps leccHomePageSteps;
 
