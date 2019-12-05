@@ -63,14 +63,10 @@ public class YellowJsButtonStepsDefinition {
         leccHomePageSteps.scanJsButtonfromHomePage();
         leccHomePageSteps.scanConfirmation();
         leccHomePageSteps.scanVerificationhp();
-
     }
 
     @Then("^I should get the scanning results$")
     public void getScanResult(){
-
-       // Assert.assertEquals("All buttons deployed or no impac1", true, leccHomePage.outputPanelScanResult.getText());
         leccHomePageSteps.leccJsButtonScanResult("unconverted buttons are assigned but may not be used");
-
     }
 }
