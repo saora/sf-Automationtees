@@ -48,14 +48,12 @@ public class SfLoginData extends PageObject {
         try {
             FileDataReader prop = new FileDataReader();
             getDriver().get(prop.propertiesFile().getProperty(envLoginUrl));
-         try {
+
              leccLoginPage.openLecc();
-         }catch (ElementNotVisibleException e){
-             System.out.println("Element for LECC login not found !!"+e);
-         }
+
             sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("salesforce.username"));
             sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("password.salesforce"));
-        }catch (IOException e){
+        }catch (Exception e){
             System.out.println("Fail getting org user data!!");
         }
         sfLoginPage.submitBtn();

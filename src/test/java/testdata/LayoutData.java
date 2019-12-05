@@ -16,7 +16,7 @@ public class LayoutData extends PageObject {
     public void getLayoutName() {
         try {
             layoutPage.addCustomLayout(prop.propertiesFile().getProperty("layout.name"));
-        }catch (IOException e){
+        }catch (Exception e){
             System.out.println("Fail getting layout name!!");
         }
     }
@@ -24,7 +24,7 @@ public class LayoutData extends PageObject {
     public void addJsButtonToCustomLayout(){
         try{
             layoutPage.findJsButtonIntoLayout(prop.propertiesFile().getProperty("jsbutton.name"));
-        }catch (IOException e){
+        }catch (Exception e){
             System.out.println("Fail getting Js Button name!!");
         }
 

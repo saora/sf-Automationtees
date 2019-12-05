@@ -3,6 +3,7 @@ package pages.login;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import net.thucydides.core.webdriver.exceptions.ElementShouldBeEnabledException;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +32,11 @@ public class LeccLoginPage extends PageObject {
     private WebElementFacade allowAccessToLeccHomePage;
 
     public void openLecc(){
-        loginBtn.click();
+        try{
+            loginBtn.click();
+        }catch (ElementShouldBeEnabledException e){
+            System.out.println("Button before Login page was not found!! "+e);
+        }
     }
 
     public void setLoginData(String user, String pass){

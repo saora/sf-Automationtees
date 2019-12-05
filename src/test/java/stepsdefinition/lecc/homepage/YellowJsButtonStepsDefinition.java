@@ -1,4 +1,4 @@
-package stepsdefinition.lecc;
+package stepsdefinition.lecc.homepage;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

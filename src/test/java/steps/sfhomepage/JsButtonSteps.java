@@ -49,6 +49,6 @@ public class JsButtonSteps extends PageObject {
 
     @Step
     public void jsButtonverify(){
-        btnLinksActionsPage.objBtnLinkVerification();
+       // btnLinksActionsPage.objBtnLinkVerification();
     }
 }
