@@ -6,15 +6,15 @@ Feature: Get Yellow icon by scanning Js Buttons
 
   Description: Org with at least one Js Button added to any layout
 
-#  @expected-outcome:success
-#  Scenario: Configure the ORG
-#    Given I logs in salesforce page
-#    When I create a Js Button
-#    And I create a new custom Layout
-#    Then I add the Js Button to a custom laytout
-
   @expected-outcome:success
-  Scenario: Scann Js button
-    Given I log in Lecc
-    When I scan Js Button
-    Then I should get the scanning results
+  Scenario: Configure the ORG
+    Given I logs in salesforce page
+    When I create a Js Button
+    And I create a new custom Layout
+    Then I add the Js Button to a custom laytout
+
+#  @expected-outcome:success
+#  Scenario: Scann Js button
+#    Given I log in Lecc
+#    When I scan Js Button
+#    Then I should get the scanning results
