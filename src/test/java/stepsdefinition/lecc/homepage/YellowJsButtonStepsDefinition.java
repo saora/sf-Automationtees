@@ -19,11 +19,9 @@ public class YellowJsButtonStepsDefinition {
     private LayoutSteps layoutSteps;
     private JsButtonSteps jsButtonSteps;
     private LeccHomePageSteps leccHomePageSteps;
-    private LeccHomePage leccHomePage;
 
     @Given("^I logs in salesforce page$")
     public void loginSalesforce(){
-        //loginSteps.openLoginPage("https://login.salesforce.com/?locale=eu");
         loginSteps.sendLoginData("salesforce.login");
         loginSteps.verificationCodeForLogin();
         loginSteps.switchToClassicMode();
@@ -50,13 +48,9 @@ public class YellowJsButtonStepsDefinition {
 
     @Given("^I log in Lecc$")
     public void loginLecc(){
-       // loginSteps.openLoginPage("https://js-mover-dev.herokuapp.com/home.xhtml");
         loginSteps.sendLoginData("lecc.login");
         loginSteps.verificationCodeForLogin();
         loginSteps.allowAccessToLeccHomePages();
-        //loginSteps.openLeccLoginPage();
-       // loginSteps.openLoginPage("lecc.login");
-
     }
     @When("^I scan Js Button$")
     public void scanJsButton(){
