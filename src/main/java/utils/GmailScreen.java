@@ -3,9 +3,9 @@ package utils;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebDriver;
 
-public class GmailScreen extends PageObject {
+
+public class GmailScreen extends  PageObject {
     @FindBy(id = "identifierId")
     private WebElementFacade fill_UserGmail;
 
@@ -46,10 +46,6 @@ public class GmailScreen extends PageObject {
     @FindBy(name = "nvp_site_mail")
     private WebElementFacade searchMail;
 
-
-    public GmailScreen(WebDriver driver) {
-        super(driver);
-    }
 
     public void setfillGmailUser(String userGmail){
         fill_UserGmail.clear();
