@@ -5,7 +5,7 @@ import com.FileDataReader;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.assertj.core.api.SoftAssertions;
+//import org.assertj.core.api.SoftAssertions;
 import org.jruby.RubyProcess;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -89,13 +89,14 @@ public class LayoutPage extends PageObject {
     public void savedLayoutVerification() {
         FileDataReader prop = new FileDataReader();
         try {
-            SoftAssertions softAssertions = new SoftAssertions();
+           // SoftAssertions softAssertions = new SoftAssertions();
             if(layoutcreatedName.isCurrentlyVisible()) {
-                softAssertions.assertThat(layoutcreatedName.getText().equals(prop.propertiesFile().getProperty("layout.name"))).isTrue();
+                Assert.assertEquals(layoutcreatedName.getText(), prop.propertiesFile().getProperty("layout.name"));
+                //softAssertions.assertThat(layoutcreatedName.getText().equals(prop.propertiesFile().getProperty("layout.name"))).isTrue();
             }else{
                 Assert.assertFalse(errorMessageLayout.isCurrentlyVisible());
             }
-        }catch (IOException e){
+        }catch (Exception e){
             System.out.println("Saved layout. Verification fail !!");
         }
 

@@ -3,6 +3,7 @@ package pages.salesforce;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.junit.Assert;
 
 public class BtnLinksActionsPage extends PageObject {
     //New Actions --------------------------------------
@@ -69,6 +70,9 @@ public class BtnLinksActionsPage extends PageObject {
 
     @FindBy(xpath = "//*[@id=\"bottomButtonRow\"]/input[1]")
     private WebElementFacade save;
+
+    @FindBy(xpath ="//*[@id=\"bodyCell\"]/div[1]/div[1]/div[1]/h2")
+    private WebElementFacade pageDescription;
 
     public void setFillLabel(String fillLabel){
         this.fillLabel.clear();
@@ -217,9 +221,10 @@ public class BtnLinksActionsPage extends PageObject {
 
     }
 
-    public void objBtnLinkVerification(){
+    public void objBtnLinkVerification(String jsBtnName){
         //System.out.println("esto es:  ----> "+find(By.className("mainTitle")).getText());
-        // Assert.assertEquals("Custom Button or Link Detail", find(By.className("mainTitle")).getText());
+        Assert.assertEquals(pageDescription.getText(), jsBtnName);
+         //Assert.assertEquals("Custom Button or Link Detail", find(By.className("mainTitle")).getText());
     }
 
 }

@@ -5,7 +5,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.aspectj.bridge.Message;
-import org.assertj.core.api.SoftAssertions;
+//import org.assertj.core.api.SoftAssertions;
 import org.jruby.RubyProcess;
 import org.junit.Assert;
 import org.openqa.selenium.By;
