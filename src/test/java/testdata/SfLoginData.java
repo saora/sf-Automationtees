@@ -25,6 +25,8 @@ public class SfLoginData extends PageObject {
     private SfLoginPage sfLoginPage;
     private LeccLoginPage leccLoginPage;
 
+    private FileDataReader prop = new FileDataReader();
+
     public void loginSalesforce() throws IOException {
         Sheets service = getSheetsService();
         String spreadsheetId = "1lCOOmjCjy2IvDf7DhQJvMnTvhlpHPwAx1YmBRraM0PU";
@@ -43,31 +45,41 @@ public class SfLoginData extends PageObject {
         }
     }
 
-    public void sfEnterLoginData(String envLoginUrl){
-        getDriver().manage().window().maximize();
-        try {
-            FileDataReader prop = new FileDataReader();
-            getDriver().get(prop.propertiesFile().getProperty(envLoginUrl));
+    public void sfEnterLoginData(String scanIcon) {
+        leccLoginPage.openLecc();
 
-             leccLoginPage.openLecc();
+        switch (scanIcon){
+            case "Green":
+                sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("green-org.username"));
+                sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("green-org.password"));
+                break;
+            case "Yellow":
+                sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("yellow-org.username"));
+                sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("yellow-org.password"));
+                break;
 
-            sfLoginPage.setOrgUser(prop.propertiesFile().getProperty("salesforce.username"));
-            sfLoginPage.setOrgPass(prop.propertiesFile().getProperty("password.salesforce"));
-        }catch (Exception e){
-            System.out.println("Fail getting org user data!!");
         }
+
         sfLoginPage.submitBtn();
+    }
+
+    public void geturlFroLogin(String loginUrl){
+        getDriver().get(prop.propertiesFile().getProperty(loginUrl));
     }
 
 
     public void verificationCodebyEmail(){
         try {
             String colect = InboxReader.getEmail();
-            System.out.println("Codigo email "+colect);
-            sfLoginPage.setVerificationCode(colect);
-            sfLoginPage.submmitVerificationCode();
+            if(!colect.equals("")){
+                System.out.println("Email Verification code: "+colect);
+                sfLoginPage.setVerificationCode(colect);
+                sfLoginPage.submmitVerificationCode();
+            }else{
+                System.out.println("Verification not nedded");
+            }
         }catch (Exception e){
-            System.out.println("Verification not nedded");
+            System.out.println("Fail while getting the verification code... "+e.getMessage());
         }
     }
 }

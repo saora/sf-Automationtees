@@ -14,27 +14,40 @@ public class SfLoginStepsDefinition {
     private SfHomePage sfHomePage;
 
 
-    @Given("^I navigate to the Login page$")
-    public void getLoginPage(){
-        loginSteps.openLoginPage("https://login.salesforce.com/?locale=eu");
+    @Given("^I navigate to Salesforce Login page$")
+    public void getSaleforceLoginPage(){
+        loginSteps.openLoginPage("salesforce.login");
     }
 
-    @When("^I submit the username and password$")
-    public void fillData() {
-        loginSteps.sendLoginData("salesforce.login");
+    @Given("^I navigate to Lecc Login page$")
+    public void getLeccLoginPage(){
+        loginSteps.openLoginPage("lecc.login");
+    }
+
+    @When("^I log in org with green icon$")
+    public void orgWithGreenIcon() {
+        loginSteps.sendLoginData("Green");
         loginSteps.verificationCodeForLogin();
+        loginSteps.allowAccessToLeccHomePages();
     }
 
-    @Then("^I log in Salesforce page$")
+    @When("^I log in org with yellow icon$")
+    public void orgWithYellowIcon() {
+        loginSteps.sendLoginData("Yellow");
+        loginSteps.verificationCodeForLogin();
+        loginSteps.allowAccessToLeccHomePages();
+    }
+
+    @Then("^I should Logged In the salesforce page$")
     public void sfLoginValidation(){
+        sfHomePage.switchToClassic();
         //loginSteps.loginExpectedResult();
     }
 
-    @Then("^I select the Object$")
-    public void verifyAcct(){
-        sfHomePage.switchToClassic();
-        sfHomePage.buildOption();
-        sfHomePage.selSalesforceObject("Campaigns");
-    }
+
+
+
+
+
 
 }

@@ -22,8 +22,8 @@ public class LeccHomePageSteps extends PageObject {
     }
 
     @Step
-    public void scanVerificationhp(){
-        leccHomePage.scanVerification();
+    public void scanVerificationhp(String scanIconType){
+        leccHomePage.scanVerification(scanIconType);
     }
 
     @Step

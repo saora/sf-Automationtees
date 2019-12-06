@@ -19,15 +19,14 @@ public class LoginSteps {
     @Step
     public void openLoginPage(String urlapplication) {
         sfLoginPage.getDriver().manage().window().maximize();
-        sfLoginPage.getDriver().get(urlapplication);
-       // sfLoginPage.open();
+        sfLoginData.geturlFroLogin(urlapplication);
+
+        // sfLoginPage.open();
     }
 
     @Step
-    public void sendLoginData(String urlLoginPage) {
-        //sfLoginData.loginSalesforce();
-        sfLoginData.sfEnterLoginData(urlLoginPage);
-
+    public void sendLoginData(String orgWithIcon) {
+        sfLoginData.sfEnterLoginData(orgWithIcon);
     }
 
     public void openLeccLoginPage(){
@@ -45,12 +44,6 @@ public class LoginSteps {
     @Step
     public void switchToClassicMode(){
         sfHomePage.switchToClassic();
-    }
-
-    @Step
-    public void sendLeccLoginData(String urlLoginPage){
-        //leccLoginData.loginLecc();
-          sfLoginData.sfEnterLoginData(urlLoginPage);
     }
 
     @Step

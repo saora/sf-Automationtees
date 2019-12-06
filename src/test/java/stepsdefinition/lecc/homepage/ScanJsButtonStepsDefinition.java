@@ -1,31 +1,19 @@
 package stepsdefinition.lecc.homepage;
 
-import cucumber.api.java.en.Given;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.en_scouse.An;
 import net.thucydides.core.annotations.Steps;
 
-import org.junit.Assert;
-import pages.lecc.LeccHomePage;
 import steps.lecchomepage.LeccHomePageSteps;
-import steps.login.LoginSteps;
 import steps.sfhomepage.JsButtonSteps;
 import steps.sfhomepage.LayoutSteps;
 
-public class YellowJsButtonStepsDefinition {
+public class ScanJsButtonStepsDefinition {
     @Steps
-    private LoginSteps loginSteps;
     private LayoutSteps layoutSteps;
     private JsButtonSteps jsButtonSteps;
     private LeccHomePageSteps leccHomePageSteps;
-
-    @Given("^I logs in salesforce page$")
-    public void loginSalesforce(){
-        loginSteps.sendLoginData("salesforce.login");
-        loginSteps.verificationCodeForLogin();
-        loginSteps.switchToClassicMode();
-    }
 
     @When("^I create a Js Button$")
     public void createJsButton(){
@@ -34,7 +22,7 @@ public class YellowJsButtonStepsDefinition {
         jsButtonSteps.newJsButton();
     }
 
-    @An("^I create a new custom Layout$")
+    @And("^I create a new custom Layout$")
     public void createCustomLayout() {
         layoutSteps.addJsButtonToLayout("Page Layouts");
         layoutSteps.getCustomLayoutName();
@@ -46,21 +34,28 @@ public class YellowJsButtonStepsDefinition {
         layoutSteps.saveLayout();
     }
 
-    @Given("^I log in Lecc$")
-    public void loginLecc(){
-        loginSteps.sendLoginData("lecc.login");
-        loginSteps.verificationCodeForLogin();
-        loginSteps.allowAccessToLeccHomePages();
-    }
-    @When("^I scan Js Button$")
-    public void scanJsButton(){
+    @And("^I scan Js Button green icon$")
+    public void scanJsButtonGreenIcon(){
         leccHomePageSteps.scanJsButtonfromHomePage();
         leccHomePageSteps.scanConfirmation();
-        leccHomePageSteps.scanVerificationhp();
+        leccHomePageSteps.scanVerificationhp("Green");
     }
 
-    @Then("^I should get the scanning results$")
-    public void getScanResult(){
+    @And("^I scan Js Button yellow icon$")
+    public void scanJsButtonYellowIcon(){
+        leccHomePageSteps.scanJsButtonfromHomePage();
+        leccHomePageSteps.scanConfirmation();
+        leccHomePageSteps.scanVerificationhp("Yellow");
+    }
+
+
+    @Then("^I should get yellow icon in the scanning results$")
+    public void getYellowJsButtonScanResult(){
         leccHomePageSteps.leccJsButtonScanResult("unconverted buttons are assigned but may not be used");
+    }
+
+    @Then("^I should get green icon in the scanning results$")
+    public void getGreenJsButtonScanResult(){
+        leccHomePageSteps.leccJsButtonScanResult("All buttons deployed or no impact");
     }
 }
