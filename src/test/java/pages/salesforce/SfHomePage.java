@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
@@ -295,16 +296,11 @@ public class SfHomePage extends PageObject {
 
     public void switchToClassic(){
        try {
-//            System.out.println(getAlert().getText());
-//            getDriver().switchTo().alert().accept();
-          // userProfile.withTimeoutOf(5,SECONDS).waitUntilPresent();
-
-            userProfile.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
-            classicMode.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
-            setupLink.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
-
+           userProfile.withTimeoutOf(Duration.ofSeconds(5)).waitUntilClickable().click();
+           classicMode.withTimeoutOf(Duration.ofSeconds(5)).waitUntilClickable().click();
+           setupLink.withTimeoutOf(Duration.ofSeconds(5)).waitUntilClickable().click();
         }catch (Exception e) {
-            System.out.println(Message.ERROR);
+            System.out.println("The org is already in classic mode..."+Message.ERROR);
         }
     }
 
@@ -460,10 +456,6 @@ public class SfHomePage extends PageObject {
             default:
                 System.out.println("b no match!!");
         }
-    }
-
-    public void selObjOption2(){
-        btnlinksactionsOption2.click();
     }
 
     public void selObjectOption(String option){

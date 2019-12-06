@@ -49,12 +49,19 @@ public class LeccHomePage extends PageObject {
         jsButtonConfirm.click();
 
     }
-    public void scanVerification(){
+    public void scanVerification(String scanType){
         inProgress.getText();
         System.out.println("STATUS: "+outputPanelScanResult.getText());
-        scanResultYellowIcon.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
+        switch (scanType){
+            case "Green":
+                getScanResultGreenIcon.withTimeoutOf(Duration.ofSeconds(120)).waitUntilVisible();
+                break;
+            case "Yellow":
+                scanResultYellowIcon.withTimeoutOf(Duration.ofSeconds(120)).waitUntilVisible();
+                break;
+        }
+
         System.out.println("AFTER SCAN: "+outputPanelScanResult.getText());
-          //waitOnPage().until(ExpectedConditions.visibilityOfElementLocated(By.id("form-j_idt81")));
     }
 
     public void scanResult(String textValidation) {

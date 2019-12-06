@@ -5,7 +5,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(features = "src/test/resources/com/features/lecc/orange-jsbuttons.feature",
+@CucumberOptions(features = "src/test/resources/features/lecc/",
 glue = "stepsdefinition")
 
 public class RunTest {

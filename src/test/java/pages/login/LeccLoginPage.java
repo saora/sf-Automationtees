@@ -5,6 +5,7 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.webdriver.exceptions.ElementShouldBeEnabledException;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 //@DefaultUrl("https://js-mover-dev.herokuapp.com/home.xhtml")
@@ -56,9 +57,8 @@ public class LeccLoginPage extends PageObject {
     }
 
     public void allowLeccAccess(){
-        getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         try{
-            allowAccessToLeccHomePage.click();
+            allowAccessToLeccHomePage.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
         }catch(Exception e){
             System.out.println("Element for allow acces is not present !!");
 

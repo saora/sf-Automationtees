@@ -29,7 +29,6 @@ public class InboxReader {
             Session session = Session.getDefaultInstance(props, null);
             Store store = session.getStore("imaps");
             store.connect("imap.gmail.com",prop.propertiesFile().getProperty("acct.u"),getPass.getEncrData());
-            //store.connect("imap.gmail.com","glbltest.salesforce@gmail.com","61084n7mex01");
             Folder inbox = store.getFolder("Inbox");
             inbox.open(Folder.READ_WRITE);
             FlagTerm ft = new FlagTerm(new Flags(Flags.Flag.SEEN), false);
