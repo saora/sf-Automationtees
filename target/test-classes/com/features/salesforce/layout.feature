@@ -10,7 +10,7 @@ Feature: Definition
   Description: Layouts for objects
 
   Background: User Logged in
-  #Scenario: Log in salesforce
+  #Scenario: Log in com
     Given I navigate to the Login page
     When I submit the username and password
     Then I log in Salesforce page

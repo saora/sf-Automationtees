@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="1" name="Definition" skipped="0" tests="1" time="42.7" timestamp="2019-11-21 12:49:20"><testcase name="Add layout"><failure type="java.lang.AssertionError"/><system-err>null&#13;
-pages.login.SfLoginPage.salesforceLoginVerification(SfLoginPage.java:76)&#13;
-steps.login.LoginSteps.loginExpectedResult(LoginSteps.java:43)&#13;
-stepsdefinition.salesforce.SfLoginStepsDefinition.sfLoginValidation(SfLoginStepsDefinition.java:29)&#13;
-cucumber.runner.Runner.runPickle(Runner.java:80)&#13;
-</system-err></testcase></testsuite>

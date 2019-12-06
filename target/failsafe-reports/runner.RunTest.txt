@@ -1,7 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: runner.RunTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 56.148 s <<< FAILURE! - in runner.RunTest
-Feature: Definition  Time elapsed: 42.978 s  <<< ERROR!
-java.lang.NoSuchMethodError: net.thucydides.core.model.TestOutcome.testStepWithDescription(Ljava/lang/String;)Lcom/google/common/base/Optional;
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 199.586 s - in runner.RunTest
