@@ -63,7 +63,7 @@ public class GreenJsButtonStepsDefinition {
     public void scanJsButton(){
         leccHomePageSteps.scanJsButtonfromHomePage();
         leccHomePageSteps.scanConfirmation();
-        leccHomePageSteps.scanVerificationhp();
+        leccHomePageSteps.scanVerificationhp("");
     }
 
     @Then("^I should get the scanning results$")
