@@ -1,4 +1,4 @@
-package stepsdefinition.salesforce;
+package stepsdefinition.com;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -7,12 +7,10 @@ import net.thucydides.core.annotations.Steps;
 import pages.salesforce.SfHomePage;
 import steps.login.LoginSteps;
 
-public class SfLoginStepsDefinition {
+public class LoginStepsDefinition {
 
     @Steps
     private LoginSteps loginSteps;
-    private SfHomePage sfHomePage;
-
 
     @Given("^I navigate to Salesforce Login page$")
     public void getSaleforceLoginPage(){
@@ -40,7 +38,7 @@ public class SfLoginStepsDefinition {
 
     @Then("^I should Logged In the salesforce page$")
     public void sfLoginValidation(){
-        sfHomePage.switchToClassic();
+        loginSteps.switchToClassicMode();
         //loginSteps.loginExpectedResult();
     }
 
