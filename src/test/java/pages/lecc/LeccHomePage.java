@@ -25,8 +25,14 @@ public class LeccHomePage extends PageObject {
     @FindBy(id = "form-j_idt72")
     private WebElementFacade inProgress_JSB;
 
-    @FindBy(id = "form-j_idt78")
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div/form/div[2]/div/div/div/div[2]/div/div[1]/div/article/div[2]/div")
     private WebElementFacade outputPannel_JSB;
+
+    @FindBy(id = "form-j_idt78")
+    private WebElementFacade outputPannel_JSB_GREEN;
+
+    @FindBy(id = "form-j_idt81")
+    private WebElementFacade getOutputPannel_JSB_YELLOW;
 
     // Actions & Buttons
     @FindBy(id = "form-j_idt119")
