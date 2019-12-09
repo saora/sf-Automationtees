@@ -5,16 +5,16 @@ Feature: Js Buttons
 
   Description: Org with MyDomain already deployed and at least one Js Button added to any layout
 
+Background:
+Given I navigate to Lecc Login page
 
-  Scenario: Green icon by scanning Js Buttons
-    Given I navigate to Lecc Login page
-    When I log in org with green icon
-    Then I should Logged In the salesforce page
-    And I scan Js Button green icon
-    And I should get green icon in the scanning results
+#  Scenario: Green icon by scanning Js Buttons
+#    When I log in org with green icon
+#    Then I should Logged In the salesforce page
+#    And I scan Js Button green icon
+#    And I should get green icon in the scanning results
 
   Scenario: Yellow icon by scanning Js Buttons
-    Given I navigate to Lecc Login page
     When I log in org with yellow icon
     Then I should Logged In the salesforce page
     And I scan Js Button yellow icon

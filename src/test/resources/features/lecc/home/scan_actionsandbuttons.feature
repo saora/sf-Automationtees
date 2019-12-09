@@ -1,21 +1,21 @@
-Feature: Visualforce pages
-  In order validate the scan results for visualforce Pages from Home of LECC
+Feature: Visualforce Pages
+  In order validate the scan results for Visualforce Pages from Home of LECC
   As a Registered user
-  I want to log in LECC and scan Visualforce pages
+  I want to log in LECC and scan Visualforce Pages
 
-  Description: Org with MyDomain already deployed and at least one Js Button added to any layout
+  Description: Org with MyDomain already deployed and at least one Actions and buttons added to any layout
 
-  @expected-outcome:success
-  Scenario: Green icon by scanning Visualforce pages
-    Given I navigate to Lecc Login page
+ Background:
+ Given I navigate to Lecc Login page
+
+  Scenario: Green icon by scanning Visualforce Pages
     When I log in org with green icon
     Then I should Logged In the salesforce page
-    And I scan visualforce pages green icon
-    And I should get green icon in the scanning results
+    And I scan Visualforce Pages green icon
+    And I should get green icon in the scanning results for Visualforce Pages
 
-  Scenario: Yellow icon by scanning Js Buttons
-    Given I navigate to Lecc Login page
-    When I log in org with yellow icon
-    Then I should Logged In the salesforce page
-    And I scan visualforce pages yellow icon
-    And I should get yellow icon in the scanning results
+      Scenario: Yellow icon by scanning Actions and buttons
+        When I log in org with yellow icon
+        Then I should Logged In the salesforce page
+        And I scan Visualforce Pages yellow icon
+        And I should get yellow icon in the scanning results for Visualforce Pages
