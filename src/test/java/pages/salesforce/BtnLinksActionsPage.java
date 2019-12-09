@@ -1,9 +1,17 @@
 package pages.salesforce;
 
+import com.FileDataReader;
+import com.google.api.services.sheets.v4.Sheets;
+import com.google.api.services.sheets.v4.model.ValueRange;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.junit.Assert;
+import com.GetDataFromSpreadSheet;
+
+import java.io.IOException;
+import java.util.List;
+
 
 public class BtnLinksActionsPage extends PageObject {
     //New Actions --------------------------------------
@@ -66,7 +74,7 @@ public class BtnLinksActionsPage extends PageObject {
     private WebElementFacade selContentSource;
 
     @FindBy(id = "WebLinkFields_ContentEditor")
-    public WebElementFacade fillContentEditor;
+    private WebElementFacade fillContentEditor;
 
     @FindBy(xpath = "//*[@id=\"bottomButtonRow\"]/input[1]")
     private WebElementFacade save;
@@ -74,34 +82,34 @@ public class BtnLinksActionsPage extends PageObject {
     @FindBy(xpath ="//*[@id=\"bodyCell\"]/div[1]/div[1]/div[1]/h2")
     private WebElementFacade pageDescription;
 
-    public void setFillLabel(String fillLabel){
+    private void setFillLabel(String fillLabel){
         this.fillLabel.clear();
         this.fillLabel.sendKeys(fillLabel);
     }
 
-    public void setFillName(String fillName){
+    private void setFillName(String fillName){
         this.fillName.clear();
         this.fillName.sendKeys(fillName);
     }
 
-    public void setFillDescription(String fillDescription){
+    private void setFillDescription(String fillDescription){
         this.fillDescription.clear();
         this.fillDescription.sendKeys(fillDescription);
     }
 
-    public void setDetailPageLink(){
+    private void setDetailPageLink(){
         this.clickPageLink.click();
     }
 
-    public void setDetailPageButton(){
+    private void setDetailPageButton(){
         this.clickPageButton.click();
     }
 
-    public void setListButton(){
+    private void setListButton(){
         this.clickListButton.click();
     }
 
-    public void setSelBehavior(){
+    private void setSelBehavior(){
        behaviorDropdown.selectByVisibleText("Execute JavaScript");
     }
 
@@ -109,20 +117,20 @@ public class BtnLinksActionsPage extends PageObject {
 //        this.selContentSource.selectByVisibleText(selContentSource);
 //    }
 
-    public void setFillContentEditor(String fillContentEditor){
+    private void setFillContentEditor(String fillContentEditor){
         this.fillContentEditor.clear();
         this.fillContentEditor.sendKeys(fillContentEditor);
     }
 
-    public void saveJsButton(){
+    private void saveJsButton(){
         save.click();
         getDriver().switchTo().alert().accept();
     }
     //---------------------------------------------------------------
-    public void setSelActionType(String selActionType){
+    private void setSelActionType(String selActionType){
         this.selActionType.selectByVisibleText(selActionType);
     }
-    public void setSelTargetObject(String selTargetObject){
+    private void setSelTargetObject(String selTargetObject){
         try {
             this.selTargetObject.selectByVisibleText(selTargetObject);
         }catch(Exception e){
@@ -130,16 +138,16 @@ public class BtnLinksActionsPage extends PageObject {
         }
     }
 
-    public void setSelStdLabel(String selStdLabel){
+    private void setSelStdLabel(String selStdLabel){
         this.selStdLabel.selectByVisibleText(selStdLabel);
     }
 
-    public void setfillDevName(String filldevName){
+    private void setfillDevName(String filldevName){
         this.filldevName.clear();
         this.filldevName.sendKeys(filldevName);
     }
 
-    public void setCreateFeedItem(){
+    private void setCreateFeedItem(){
         try {
             feedItem.click();
         }catch (Exception e){
@@ -147,7 +155,7 @@ public class BtnLinksActionsPage extends PageObject {
         }
     }
 
-    public void setFillMessage(String fillMessage){
+    private void setFillMessage(String fillMessage){
         try {
             this.fillMessage.clear();
             this.fillMessage.sendKeys(fillMessage);
@@ -156,7 +164,7 @@ public class BtnLinksActionsPage extends PageObject {
         }
     }
 
-    public void saveAction(){
+    private void saveAction(){
         saveAction.click();
 
     }
@@ -175,7 +183,7 @@ public class BtnLinksActionsPage extends PageObject {
         saveAction.click();
     }
 
-    public void clickOption(String btnOption){
+    private void clickOption(String btnOption){
         switch(btnOption){
             case "New Action":
                 clickNewAction.click();
@@ -221,10 +229,102 @@ public class BtnLinksActionsPage extends PageObject {
 
     }
 
-    public void objBtnLinkVerification(String jsBtnName){
+    private void objBtnLinkVerification(String jsBtnName){
         //System.out.println("esto es:  ----> "+find(By.className("mainTitle")).getText());
         Assert.assertEquals(pageDescription.getText(), jsBtnName);
          //Assert.assertEquals("Custom Button or Link Detail", find(By.className("mainTitle")).getText());
     }
+    private SfHomePage sfHomePage;
+    public void newActionWithDataFromSpreadsheet()throws Exception{
+        Sheets service = GetDataFromSpreadSheet.getSheetsService();
+        String spreadsheetId = "1lCOOmjCjy2IvDf7DhQJvMnTvhlpHPwAx1YmBRraM0PU";
+        String range = "Action Test Data!A2:H";
+        ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
+        List<List<Object>> values = response.getValues();
+        if (values == null || values.size() == 0) {
+            System.out.println("No data found.");
+        } else {
+            for (List row : values) {
+                sfHomePage.selObjectOption("Buttons, Links, and Actions");
+                clickOption("New Action");
+                setSelActionType(String.valueOf(row.get(0)));
+                setSelTargetObject(String.valueOf(row.get(1)));
+                setSelStdLabel(String.valueOf(row.get(2)));
+                setFillLabel(String.valueOf(row.get(3)));
+                setfillDevName(String.valueOf(row.get(4)));
+                setFillDescription(String.valueOf(row.get(5)));
+                if (String.valueOf(row.get(6)).equals("Unchecked")){
+                    setCreateFeedItem();
+                }
+                setFillMessage(String.valueOf(row.get(7)));
+                saveAction();
+            }
+        }
+    }
+
+
+    public void newJavaScriptButton(){
+        FileDataReader prop = new FileDataReader();
+
+        sfHomePage.selObjectOption("Buttons, Links, and Actions");
+        clickOption("New Button or Link");
+        setFillLabel(prop.propertiesFile().getProperty("jsbutton.label"));
+        setFillName(prop.propertiesFile().getProperty("jsbutton.name"));
+        setFillDescription(prop.propertiesFile().getProperty("jsbutton.description"));
+        setDetailPageButton();
+        setSelBehavior();
+        if(fillContentEditor.isEnabled()){
+            setFillContentEditor(prop.propertiesFile().getProperty("jsbutton.contenteditor"));
+        }else{
+            System.out.println("Content Editor is not present");
+        }
+        saveJsButton();
+        //btnLinksActionsPage.setSelContentSource(prop.getProperty("jsbutton.contentsource"));
+        objBtnLinkVerification(prop.propertiesFile().getProperty("jsbutton.name"));
+    }
+
+
+    public void newJsButtonWithDataFromSpreadsheet() throws IOException {
+        Sheets service = GetDataFromSpreadSheet.getSheetsService();
+        String spreadsheetId = "1lCOOmjCjy2IvDf7DhQJvMnTvhlpHPwAx1YmBRraM0PU";
+        String range = "Js Button Test Data!A2:H";
+        ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
+        List<List<Object>> values = response.getValues();
+        if (values == null || values.size() == 0) {
+            System.out.println("No data found.");
+        } else {
+            for (List row : values) {
+                sfHomePage.selObjectOption("Buttons, Links, and Actions");
+                clickOption("New Button or Link");
+
+                setFillLabel(String.valueOf(row.get(0)));
+                setFillName(String.valueOf(row.get(1)));
+                setFillDescription(String.valueOf(row.get(2)));
+                switch (String.valueOf(row.get(3))){
+                    case "Detail Page Link":
+                        setDetailPageLink();
+                        break;
+                    case "Detail Page Button":
+                        setDetailPageButton();
+                        break;
+                    case "List Button":
+                        setListButton();
+                        break;
+                    default:
+                        System.out.println("no match");
+                }
+                //btnLinksActionsPage.setSelBehavior(String.valueOf(row.get(4)));
+                // btnLinksActionsPage.setSelContentSource(String.valueOf(row.get(5)));
+                try {
+                    setFillContentEditor(String.valueOf(row.get(6)));
+                }catch (Exception e){
+                    System.out.println("Content Editor is not present");
+                }
+                saveJsButton();
+            }
+        }
+    }
+
+
 
 }
