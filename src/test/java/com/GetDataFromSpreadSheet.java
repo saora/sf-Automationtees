@@ -1,4 +1,4 @@
-package testdata;
+package com;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -47,7 +47,7 @@ public class GetDataFromSpreadSheet {
         System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
         return credential;
     }
-    static Sheets getSheetsService() throws IOException {
+    public static Sheets getSheetsService() throws IOException {
         Credential credential = authorize();
         return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
     }

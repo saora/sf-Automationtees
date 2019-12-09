@@ -1,4 +1,4 @@
-package testdata;
+package com;
 
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-import static testdata.GetDataFromSpreadSheet.getSheetsService;
+import static com.GetDataFromSpreadSheet.getSheetsService;
 
 public class TrustedIpNetworkAccess extends PageObject {
 
