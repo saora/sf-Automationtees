@@ -30,7 +30,7 @@ public class GmailScreen extends  PageObject {
     @FindBy(name = "nvp_bu_sm")
     private WebElementFacade search_Email;
 
-    //Open first element in the list (inbox email)
+    //Open first element in the list (inbox com)
     @FindBy(xpath = "/html/body/table[3]/tbody/tr/td[2]/table[1]/tbody/tr/td[2]/form/table[2]/tbody/tr[1]/td[3]/a/span/b")
     private WebElementFacade open_Email;
 
@@ -47,12 +47,12 @@ public class GmailScreen extends  PageObject {
     private WebElementFacade searchMail;
 
 
-    public void setfillGmailUser(String userGmail){
+    private void setfillGmailUser(String userGmail){
         fill_UserGmail.clear();
         fill_UserGmail.sendKeys(userGmail);
     }
 
-    public void setfillGmailPass(String passGmail){
+    private void setfillGmailPass(String passGmail){
         fill_UserPassword.clear();
         fill_UserPassword.sendKeys(passGmail);
     }
@@ -94,7 +94,7 @@ public class GmailScreen extends  PageObject {
     }
 
     public void verfyAcctByemail(String userGmail, String passGmail){
-//Search email
+//Search com
         setfillGmailUser(userGmail);
         setClick_FirsNext();
         setfillGmailPass(passGmail);
@@ -110,13 +110,13 @@ public class GmailScreen extends  PageObject {
         setClick_SearchEmail();*/
     }
 
-    //Find email
+    //Find com
     public void findEmailToVerifyAccount(String subjectEmail){
         findEmail.sendKeys(subjectEmail);
         searchMail.click();
 
     }
-    //Open email
+    //Open com
     public void openEmailToVerifyAccount(){
         try {
             setClick_OpenEmail();
