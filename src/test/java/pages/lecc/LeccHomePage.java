@@ -64,6 +64,9 @@ public class LeccHomePage extends PageObject {
     private WebElementFacade clickLetsDoit_VFP;
 
     @FindBy(id = "form-j_idt152")
+    private WebElementFacade inProgress_VFP_K;
+
+    @FindBy(id = "form-j_idt150")
     private WebElementFacade inProgress_VFP;
 
     //Hard-Coded URLs
@@ -106,7 +109,7 @@ public class LeccHomePage extends PageObject {
         }else{
             System.out.println("Before scan.. "+outputPannel_JSB.getText());
         }
-        getDriver().switchTo().activeElement();
+        //getDriver().switchTo().activeElement();
         clickLetsDoit_JSB.waitUntilClickable().click();
         inProgress_JSB.getText();
         System.out.println("Status.. "+inProgress_JSB.getText());
@@ -129,22 +132,21 @@ public class LeccHomePage extends PageObject {
     }
 
     public void scanVisualforcePages(){
-        clickScan_VFP.withTimeoutOf(Duration.ofSeconds(5)).waitUntilClickable().click();
+        clickScan_VFP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
         if(outputPannelFirstScan_VFP.isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_VFP.getText());
         }else{
             System.out.println("Before scan.. "+outputPannel_VFP.getText());
-
         }
         clickLetsDoit_VFP.waitUntilClickable().click();
         inProgress_VFP.getText();
         System.out.println("Status.. "+inProgress_VFP.getText());
-        outputPannel_VFP.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
+        outputPannel_VFP.withTimeoutOf(Duration.ofSeconds(180)).waitUntilVisible();
         System.out.println("After scan.. .. "+outputPannel_VFP.getText());
     }
 
     public void scanHardCodedUrls(){
-        clickScan_HCU.withTimeoutOf(Duration.ofSeconds(5)).waitUntilClickable().click();
+        clickScan_HCU.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
         if(outputPannelFirstScan_HCU.isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_HCU.getText());
         }else{
@@ -159,7 +161,7 @@ public class LeccHomePage extends PageObject {
     }
 
     public void scanAppExchangePackages(){
-        clickScan_AEP.withTimeoutOf(Duration.ofSeconds(5)).waitUntilClickable().click();
+        clickScan_AEP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
         if(outputPannelFirstScan_AEP.isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_AEP.getText());
         }else{
