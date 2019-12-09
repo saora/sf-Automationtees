@@ -3,16 +3,9 @@ package pages.lecc;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-import org.jruby.RubyProcess;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.UnhandledAlertException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class LeccHomePage extends PageObject {
     @FindBy(id = "form-j_idt62")
@@ -40,15 +33,18 @@ public class LeccHomePage extends PageObject {
     private WebElementFacade iconContainer;
 
     public void jsBtnScan(){
+        try {
+            System.out.println("BEFORE SCAN: " + outputPanelScanResult.getText());
+        } catch (Exception e) {
+            System.out.println("First scan ...!");
+        }
         jsButtonScan.withTimeoutOf(Duration.ofSeconds(10)).click();
-       // jsButtonScan.waitUntilClickable().click();
-        System.out.println("BEFORE SCAN: "+outputPanelScanResult.getText());
     }
     public void confirmScan(){
         getDriver().switchTo().activeElement();
         jsButtonConfirm.click();
-
     }
+
     public void scanVerification(String scanType){
         inProgress.getText();
         System.out.println("STATUS: "+outputPanelScanResult.getText());

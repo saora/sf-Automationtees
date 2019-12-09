@@ -16,14 +16,14 @@ public class NetworkAccessStepsDefinition {
     private TrustedIpNetworkAccess trustedIpNetworkAccess;
 
     @Given("I navigate to Saleforce Login page")
-    public void openSfLoginPage(){
+    public void openSfLoginPage() {
         loginSteps.openLoginPage("salesforce.login");
         loginSteps.sendLoginData("Green");
         loginSteps.verificationCodeForLogin();
     }
 
     @When("I submit the username and password")
-    public void fillDataLogin()throws IOException {
+    public void fillDataLogin() throws IOException {
         trustedIpNetworkAccess.setIPConfiguration();
     }
 
