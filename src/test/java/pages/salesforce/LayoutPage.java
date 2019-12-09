@@ -5,19 +5,7 @@ import com.FileDataReader;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
-//import org.assertj.core.api.SoftAssertions;
-import org.jruby.RubyProcess;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
-
-import java.io.IOException;
-import java.util.List;
-
-import static java.time.temporal.ChronoUnit.SECONDS;
-
 
 public class LayoutPage extends PageObject {
     @FindBy(name = "new")
@@ -56,53 +44,36 @@ public class LayoutPage extends PageObject {
     @FindBy(id = "ext-gen51")
     private WebElementFacade savebtnLayout;
 
-    public void findJsButtonIntoLayout(String jsbuttonName) {
-        buttonOptFromDropDown.click();
-        findJsButton.sendKeys(jsbuttonName);
-        //getDriver().switchTo().frame(0);
-       //dragAndDropCustomJsButtonToCustomLayout();
-        //Actions action = new Actions(getDriver());
-        //action.clickAndHold(getDriver().findElement(By.xpath("//div[@id='fieldTrough']/table/tbody/tr/td/div/div"))).moveToElement(toElement).release().build().perform();
-            System.out.println("Js Button Name: "+customJsButtonName.getText());
+    private SfHomePage sfHomePage;
+    private FileDataReader prop = new FileDataReader();
 
-    }
-
-    public void dragAndDropCustomJsButtonToCustomLayout(){
-        withAction().dragAndDrop(customJsButtonName,toElement).build().perform();
-    }
-
-    public void saveLayoutConfiguration(){
-        savebtnLayout.click();
-    }
-
-    public void addCustomLayout(String lName){
-        //newLayout.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
+    private BtnLinksActionsPage btnLinksActionsPage;
+    public void newCustomLayout(){
+        sfHomePage.selObjectOption("Page Layouts");
         newLayout.waitUntilEnabled().click();
-        layoutName.sendKeys(lName);
+        layoutName.sendKeys(prop.propertiesFile().getProperty("layout.name"));
         saveLayout.click();
-        //saveLayout.withTimeoutOf(5,SECONDS).waitUntilClickable().click();
-        //Assert.assertTrue(layoutcreatedName.isCurrentlyVisible());
 
-    }
-
-
-    public void savedLayoutVerification() {
-        FileDataReader prop = new FileDataReader();
         try {
-           // SoftAssertions softAssertions = new SoftAssertions();
-            if(layoutcreatedName.isCurrentlyVisible()) {
+            if (layoutcreatedName.isCurrentlyVisible()) {
                 Assert.assertEquals(layoutcreatedName.getText(), prop.propertiesFile().getProperty("layout.name"));
-                //softAssertions.assertThat(layoutcreatedName.getText().equals(prop.propertiesFile().getProperty("layout.name"))).isTrue();
-            }else{
+            } else {
                 Assert.assertFalse(errorMessageLayout.isCurrentlyVisible());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Saved layout. Verification fail !!");
         }
 
+        buttonOptFromDropDown.click();
+        findJsButton.sendKeys(prop.propertiesFile().getProperty("layout.name"));
+        System.out.println("Js Button Name: "+customJsButtonName.getText());
 
+        withAction().dragAndDrop(customJsButtonName,toElement).build().perform();
+
+        savebtnLayout.click();
 
     }
+
 
 
 }
