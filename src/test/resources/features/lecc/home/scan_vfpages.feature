@@ -3,7 +3,7 @@ Feature: Visualforce Pages
   As a Registered user
   I want to log in LECC and scan Visualforce Pages
 
-  Description: Org with MyDomain already deployed and at least one Actions and buttons added to any layout
+  Description: Org with MyDomain already deployed and at least one Visualforce Pages added to any layout
 
  Background:
      Given I navigate to Lecc Login page

@@ -6,13 +6,14 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.junit.Assert;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class LeccHomePage extends PageObject {
 
     @FindBy(id = "spinner")
     private WebElementFacade spinner;
 
-   // Javascript Buttons
+    // Javascript Buttons
     @FindBy(id = "form-j_idt67")
     private WebElementFacade outputPannelFirstScan_JSB;
 
@@ -47,7 +48,8 @@ public class LeccHomePage extends PageObject {
     @FindBy(id = "form-j_idt108")
     private WebElementFacade outputPannel_AAB;
 
-    @FindBy(id = "form-j_idt113")
+    //form-j_idt113
+    @FindBy(id = "form-j_idt111")
     private WebElementFacade inProgress_AAB;
 
     // Visual force pages
@@ -64,9 +66,6 @@ public class LeccHomePage extends PageObject {
     private WebElementFacade clickLetsDoit_VFP;
 
     @FindBy(id = "form-j_idt152")
-    private WebElementFacade inProgress_VFP_K;
-
-    @FindBy(id = "form-j_idt150")
     private WebElementFacade inProgress_VFP;
 
     //Hard-Coded URLs
@@ -103,79 +102,83 @@ public class LeccHomePage extends PageObject {
 
 
     public void javascriptButtonScan(){
-        clickScan_JSB.withTimeoutOf(Duration.ofSeconds(5)).waitUntilClickable().click();
-        if(outputPannelFirstScan_JSB.isCurrentlyVisible()){
+        if(outputPannelFirstScan_JSB.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
             System.out.println("First Js Button scan.. "+outputPannelFirstScan_JSB.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_JSB.getText());
+            System.out.println("Before scan.. "+outputPannel_JSB.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
         }
+        clickScan_JSB.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
+
         //getDriver().switchTo().activeElement();
         clickLetsDoit_JSB.waitUntilClickable().click();
-        inProgress_JSB.getText();
+        inProgress_JSB.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_JSB.getText());
         outputPannel_JSB.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
         System.out.println("After scan.. .. "+outputPannel_JSB.getText());
     }
 
     public void actionAndButtonScan(){
-        clickScan_AAB.withTimeoutOf(Duration.ofSeconds(5)).waitUntilClickable().click();
-        if(outputPannelFirstScan_AAB.isCurrentlyVisible()){
+        if(outputPannelFirstScan_AAB.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
             System.out.println("First Actions and Buttons Scan.. "+outputPannelFirstScan_AAB.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_AAB.getText());
+            System.out.println("Before scan.. "+outputPannel_AAB.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
         }
+        clickScan_AAB.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
+
         clickLetsDoit_AAB.waitUntilClickable().click();
-        inProgress_AAB.getText();
-        System.out.println("Status.. "+outputPannel_AAB.getText());
+        inProgress_AAB.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
+        System.out.println("Status.. "+inProgress_AAB.getText());
         outputPannel_AAB.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
         System.out.println("After scan.. .. "+outputPannel_AAB.getText());
     }
 
     public void scanVisualforcePages(){
-        clickScan_VFP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
-        if(outputPannelFirstScan_VFP.isCurrentlyVisible()){
+        if(outputPannelFirstScan_VFP.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_VFP.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_VFP.getText());
+            System.out.println("Before scan.. "+outputPannel_VFP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
+
         }
+        clickScan_VFP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
         clickLetsDoit_VFP.waitUntilClickable().click();
-        inProgress_VFP.getText();
+        inProgress_VFP.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_VFP.getText());
-        outputPannel_VFP.withTimeoutOf(Duration.ofSeconds(180)).waitUntilVisible();
+        outputPannel_VFP.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
         System.out.println("After scan.. .. "+outputPannel_VFP.getText());
     }
 
     public void scanHardCodedUrls(){
-        clickScan_HCU.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
-        if(outputPannelFirstScan_HCU.isCurrentlyVisible()){
+        if(outputPannelFirstScan_HCU.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_HCU.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_HCU.getText());
+            System.out.println("Before scan.. "+outputPannel_HCU.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
 
         }
+        clickScan_HCU.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
         clickLetsDoit_HCU.waitUntilClickable().click();
-        inProgress_HCU.getText();
+        inProgress_HCU.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_HCU.getText());
         outputPannel_HCU.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
         System.out.println("After scan.. .. "+outputPannel_HCU.getText());
     }
 
     public void scanAppExchangePackages(){
-        clickScan_AEP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
-        if(outputPannelFirstScan_AEP.isCurrentlyVisible()){
+
+        if(outputPannelFirstScan_AEP.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_AEP.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_AEP.getText());
+            System.out.println("Before scan.. "+outputPannel_AEP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
         }
+        clickScan_AEP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
         clickLetsDoit_AEP.waitUntilClickable().click();
-        inProgress_AEP.getText();
+        inProgress_AEP.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_AEP.getText());
         outputPannel_AEP.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
         System.out.println("After scan.. .. "+outputPannel_AEP.getText());
     }
 
     public void scanJsButtonResult(String txtScanJSB) {
-            Assert.assertTrue(outputPannel_JSB.getText(),outputPannel_JSB.containsText(txtScanJSB));
+        Assert.assertTrue(outputPannel_JSB.getText(),outputPannel_JSB.containsText(txtScanJSB));
     }
 
     public void scanResultActionsAndButtons(String txtScanAAB){
