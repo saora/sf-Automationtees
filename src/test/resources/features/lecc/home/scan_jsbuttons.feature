@@ -8,11 +8,11 @@ Feature: Js Buttons
 Background:
 Given I navigate to Lecc Login page
 
-#  Scenario: Green icon by scanning Js Buttons
-#    When I log in org with green icon
-#    Then I should Logged In the salesforce page
-#    And I scan Js Button green icon
-#    And I should get green icon in the scanning results
+  Scenario: Green icon by scanning Js Buttons
+    When I log in org with green icon
+    Then I should Logged In the salesforce page
+    And I scan Js Button green icon
+    And I should get green icon in the scanning results
 
   Scenario: Yellow icon by scanning Js Buttons
     When I log in org with yellow icon
