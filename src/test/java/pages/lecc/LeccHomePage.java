@@ -35,6 +35,9 @@ public class LeccHomePage extends PageObject {
     @FindBy(id = "form-j_idt81")
     private WebElementFacade getOutputPannel_JSB_YELLOW;
 
+    @FindBy(id = "form-j_idt74")
+    private WebElementFacade loadingTextContainer_JSB;
+
     // Actions & Buttons
     @FindBy(id = "form-j_idt119")
     private WebElementFacade outputPannelFirstScan_AAB;
@@ -47,6 +50,9 @@ public class LeccHomePage extends PageObject {
 
     @FindBy(id = "form-j_idt108")
     private WebElementFacade outputPannel_AAB;
+
+    @FindBy(id = "form-j_idt115")
+    private WebElementFacade loadingTextContainer_AAB;
 
     //form-j_idt113
     @FindBy(id = "form-j_idt111")
@@ -68,6 +74,9 @@ public class LeccHomePage extends PageObject {
     @FindBy(id = "form-j_idt152")
     private WebElementFacade inProgress_VFP;
 
+    @FindBy(id = "form-j_idt154")
+    private WebElementFacade loadingTextContainer_VFP;
+
     //Hard-Coded URLs
     @FindBy(id = "form-j_idt185")
     private WebElementFacade outputPannelFirstScan_HCU;
@@ -83,6 +92,9 @@ public class LeccHomePage extends PageObject {
 
     @FindBy(id = "form-j_idt182")
     private WebElementFacade outputPannel_HCU;
+
+    @FindBy(id = "form-j_idt175")
+    private WebElementFacade loadingTextContainer_HCU;
 
     //App Exchange Packages
     @FindBy(id = "form-noScanPerformedAppex")
@@ -100,17 +112,31 @@ public class LeccHomePage extends PageObject {
     @FindBy(id = "form-j_idt216")
     private WebElementFacade outputPannel_AEP;
 
+    @FindBy(id = "form-j_idt212")
+    private WebElementFacade loadingTextContainer_AEP;
+
+
+
+
+    private void clickOnElement(WebElementFacade element){
+            element.waitUntilClickable().click();
+    }
+
+    private void waitUntilPageIsReady(){
+        do{
+            System.out.println("Waiting until page is ready for scan... !!!");
+        }while(loadingTextContainer_JSB.isCurrentlyVisible()||loadingTextContainer_AAB.isCurrentlyVisible()||loadingTextContainer_VFP.isCurrentlyVisible()||loadingTextContainer_HCU.isCurrentlyVisible()||loadingTextContainer_AEP.isCurrentlyVisible());
+    }
 
     public void javascriptButtonScan(){
-        if(outputPannelFirstScan_JSB.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
+        waitUntilPageIsReady();
+        if(outputPannelFirstScan_JSB.isCurrentlyVisible()){
             System.out.println("First Js Button scan.. "+outputPannelFirstScan_JSB.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_JSB.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
+            System.out.println("Before scan.. "+outputPannel_JSB.getText());
         }
-        clickScan_JSB.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
-
-        //getDriver().switchTo().activeElement();
-        clickLetsDoit_JSB.waitUntilClickable().click();
+        clickOnElement(clickScan_JSB);
+        clickOnElement(clickLetsDoit_JSB);
         inProgress_JSB.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_JSB.getText());
         outputPannel_JSB.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
@@ -118,14 +144,14 @@ public class LeccHomePage extends PageObject {
     }
 
     public void actionAndButtonScan(){
-        if(outputPannelFirstScan_AAB.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
+        waitUntilPageIsReady();
+        if(outputPannelFirstScan_AAB.isCurrentlyVisible()){
             System.out.println("First Actions and Buttons Scan.. "+outputPannelFirstScan_AAB.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_AAB.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
+            System.out.println("Before scan.. "+outputPannel_AAB.getText());
         }
-        clickScan_AAB.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
-
-        clickLetsDoit_AAB.waitUntilClickable().click();
+        clickOnElement(clickScan_AAB);
+        clickOnElement(clickLetsDoit_AAB);
         inProgress_AAB.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_AAB.getText());
         outputPannel_AAB.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
@@ -133,14 +159,14 @@ public class LeccHomePage extends PageObject {
     }
 
     public void scanVisualforcePages(){
-        if(outputPannelFirstScan_VFP.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
+        waitUntilPageIsReady();
+        if(outputPannelFirstScan_VFP.isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_VFP.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_VFP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
-
+            System.out.println("Before scan.. "+outputPannel_VFP.getText());
         }
-        clickScan_VFP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
-        clickLetsDoit_VFP.waitUntilClickable().click();
+        clickOnElement(clickScan_VFP);
+        clickOnElement(clickLetsDoit_VFP);
         inProgress_VFP.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_VFP.getText());
         outputPannel_VFP.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
@@ -148,14 +174,14 @@ public class LeccHomePage extends PageObject {
     }
 
     public void scanHardCodedUrls(){
-        if(outputPannelFirstScan_HCU.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
+        waitUntilPageIsReady();
+        if(outputPannelFirstScan_HCU.isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_HCU.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_HCU.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
-
+            System.out.println("Before scan.. "+outputPannel_HCU.getText());
         }
-        clickScan_HCU.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
-        clickLetsDoit_HCU.waitUntilClickable().click();
+        clickOnElement(clickScan_HCU);
+        clickOnElement(clickLetsDoit_HCU);
         inProgress_HCU.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_HCU.getText());
         outputPannel_HCU.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();
@@ -163,14 +189,14 @@ public class LeccHomePage extends PageObject {
     }
 
     public void scanAppExchangePackages(){
-
-        if(outputPannelFirstScan_AEP.withTimeoutOf(Duration.ofSeconds(10)).isCurrentlyVisible()){
+        waitUntilPageIsReady();
+        if(outputPannelFirstScan_AEP.isCurrentlyVisible()){
             System.out.println("First Visualforce Pages scan.. "+outputPannelFirstScan_AEP.getText());
         }else{
-            System.out.println("Before scan.. "+outputPannel_AEP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilVisible().getText());
+            System.out.println("Before scan.. "+outputPannel_AEP.getText());
         }
-        clickScan_AEP.withTimeoutOf(Duration.ofSeconds(10)).waitUntilClickable().click();
-        clickLetsDoit_AEP.waitUntilClickable().click();
+        clickOnElement(clickScan_AEP);
+        clickOnElement(clickLetsDoit_AEP);
         inProgress_AEP.withTimeoutOf(Duration.ofSeconds(5)).waitUntilPresent();
         System.out.println("Status.. "+inProgress_AEP.getText());
         outputPannel_AEP.withTimeoutOf(Duration.ofSeconds(90)).waitUntilVisible();

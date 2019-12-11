@@ -25,14 +25,14 @@ public class LoginStepsDefinition {
 
     @When("^I log in org with green icon$")
     public void orgWithGreenIcon() {
-        loginPage.EnterLoginData("Green");
+        loginPage.EnterLoginData("green-org.username","green-org.password");
         //loginPage.verificationCodebyEmail();
         loginPage.allowLeccAccess();
     }
 
     @When("^I log in org with yellow icon$")
     public void orgWithYellowIcon() {
-        loginPage.EnterLoginData("Yellow");
+        loginPage.EnterLoginData("yellow-org.username","yellow-org.password");
        // loginPage.verificationCodebyEmail();
         loginPage.allowLeccAccess();
     }

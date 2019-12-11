@@ -77,26 +77,29 @@ public class LoginPage extends PageObject {
         Assert.assertTrue(salesforceClassicHomeLogo.isDisplayed());
     }
 
+    private void sendText(WebElementFacade element, String text){
+        element.clear();
+        element.sendKeys(prop.propertiesFile().getProperty(text));
+
+    }
+
+    private void clickOnelement(WebElementFacade element){
+        element.waitUntilClickable().click();
+
+    }
 
 
-    public void EnterLoginData(String scanIcon) {
+
+    public void EnterLoginData(String txtUser, String txtPass) {
         if(loginBtn.isCurrentlyVisible()){
-            loginBtn.click();
+            clickOnelement(loginBtn);
         }else{
             System.out.println("Button before Login page was not found!! ");
         }
+                sendText(user,txtUser);
+                sendText(pass, txtPass);
+                clickOnelement(submiSftBtn);
 
-        switch (scanIcon){
-            case "Green":
-                user.sendKeys(prop.propertiesFile().getProperty("green-org.username"));
-                pass.sendKeys(prop.propertiesFile().getProperty("green-org.password"));
-                break;
-            case "Yellow":
-                setOrgUser(prop.propertiesFile().getProperty("yellow-org.username"));
-                setOrgPass(prop.propertiesFile().getProperty("yellow-org.password"));
-                break;
-        }
-        submiSftBtn.click();
         if(fillVerificationCode.isCurrentlyVisible()){
             verificationCodebyEmail();
         }else{

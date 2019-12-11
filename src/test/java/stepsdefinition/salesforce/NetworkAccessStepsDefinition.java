@@ -17,7 +17,7 @@ public class NetworkAccessStepsDefinition {
     @Given("I navigate to Saleforce Login page")
     public void openSfLoginPage() {
         loginPage.getUrlLogin("salesforce.login");
-        loginPage.EnterLoginData("Green");
+        loginPage.EnterLoginData("green-org.username","green-org.password");
         loginPage.verificationCodebyEmail();
     }
 
